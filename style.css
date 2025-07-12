@@ -60,6 +60,9 @@ p {
 
 .social-icons {
   margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .social-icons a {
@@ -67,9 +70,21 @@ p {
   margin: 0 0.75rem;
   font-size: 1.8rem;
   transition: color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .social-icons a:hover {
   color: #2563eb;
   transform: scale(1.2);
+}
+
+.icon-text {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.fab {
+  font-size: 2rem; /* Make icons bigger */
 }
