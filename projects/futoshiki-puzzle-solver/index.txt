@@ -1,0 +1,203 @@
+1:"$Sreact.fragment"
+2:I[1901,["720","static/chunks/720-693f8f34451e8bf7.js","177","static/chunks/app/layout-867f565cff841db6.js"],"ThemeProvider"]
+3:I[9766,[],""]
+4:I[8924,[],""]
+5:I[240,["720","static/chunks/720-693f8f34451e8bf7.js","177","static/chunks/app/layout-867f565cff841db6.js"],"Toaster"]
+7:I[4431,[],"OutletBoundary"]
+9:I[5278,[],"AsyncMetadataOutlet"]
+b:I[4431,[],"ViewportBoundary"]
+d:I[4431,[],"MetadataBoundary"]
+e:"$Sreact.suspense"
+10:I[7150,[],""]
+:HL["/_next/static/css/cbfedafbfa95d01d.css","style"]
+0:{"P":null,"b":"sJcOOHsgElUOUa5-VLdbc","p":"","c":["","projects","futoshiki-puzzle-solver",""],"i":false,"f":[[["",{"children":["projects",{"children":[["slug","futoshiki-puzzle-solver","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/cbfedafbfa95d01d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"__className_f367f3","suppressHydrationWarning":true,"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"children":[["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}]]}]}]}]]}],{"children":["projects",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","futoshiki-puzzle-solver","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",null,["$","$L7",null,{"children":["$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$Lb",null,{"children":"$Lc"}],null],["$","$Ld",null,{"children":["$","div",null,{"hidden":true,"children":["$","$e",null,{"fallback":null,"children":"$Lf"}]}]}]]}],false]],"m":"$undefined","G":["$10",[]],"s":false,"S":true}
+11:I[4352,["115","static/chunks/115-e45b927e98767995.js","419","static/chunks/app/projects/%5Bslug%5D/page-9ae8d34ded1af729.js"],"default"]
+12:I[2619,["115","static/chunks/115-e45b927e98767995.js","419","static/chunks/app/projects/%5Bslug%5D/page-9ae8d34ded1af729.js"],""]
+6:["$","div",null,{"className":"min-h-screen bg-background","children":[["$","$L11",null,{}],["$","main",null,{"className":"pt-24 pb-16","children":["$","div",null,{"className":"container mx-auto px-4 sm:px-6 lg:px-8","children":[["$","div",null,{"className":"mb-8","children":["$","$L12",null,{"href":"/projects","className":"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-2","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left w-4 h-4","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Projects"],"ref":null}]}],["$","div",null,{"className":"text-center mb-12","children":[["$","h1",null,{"className":"text-4xl md:text-5xl max-w-6xl mx-auto font-bold mb-4","children":"Futoshiki Puzzle Solver using Evolutionary Programming"}],["$","p",null,{"className":"text-lg text-muted-foreground max-w-2xl mx-auto mb-6","children":"Futoshiki puzzle solver using genetic algorithms and island models to tackle complex constraint satisfaction problems through evolutionary programming."}],["$","div",null,{"className":"flex flex-wrap justify-center gap-2 mb-8","children":[["$","div","Python",{"className":"inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80","children":"Python"}],["$","div","Evolutionary Algorithms",{"className":"inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80","children":"Evolutionary Algorithms"}],["$","div","Genetic Algorithms",{"className":"inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80","children":"Genetic Algorithms"}]]}],["$","div",null,{"className":"flex flex-wrap justify-center gap-4","children":[["$","a",null,{"href":"https://github.com/sstraccialini/Futoshiki-Solver-using-Evolutionary-Programming","target":"_blank","rel":"noopener noreferrer","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-github w-4 h-4 mr-2","children":[["$","path","tonef",{"d":"M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"}],["$","path","9comsn",{"d":"M9 18c-4.51 2-5-2-7-2"}],"$undefined"]}],"View on GitHub"],"className":"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2","ref":null}],"$undefined","$undefined"]}]]}],"$L13"]}]}]]}]
+14:T2afc,
+<p>This project implements an <strong>Evolutionary Programming</strong> approach to solve <strong>Futoshiki puzzles</strong>, a Japanese logic-based combinatorial number puzzle. The solver uses genetic algorithms and advanced techniques like island models to tackle the complex constraint satisfaction problem that Futoshiki presents.</p>
+<p>This project was developed for the course <code>30592 -Topics in Computational Modelling - From Information Theory to Evolutionary Models</code>, Bocconi University.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#futoshiki-puzzle-solver-using-evolutionary-programming">Futoshiki Puzzle Solver using Evolutionary Programming</a><ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#about-futoshiki">About Futoshiki</a><ul>
+<li><a href="#rules">Rules:</a></li>
+</ul>
+</li>
+<li><a href="#project-features">Project Features</a><ul>
+<li><a href="#core-implementation">Core Implementation</a></li>
+<li><a href="#evolutionary-algorithms">Evolutionary Algorithms</a></li>
+<li><a href="#optimization-features">Optimization Features</a></li>
+</ul>
+</li>
+<li><a href="#files-structure">Files Structure</a></li>
+<li><a href="#key-components">Key Components</a><ul>
+<li><a href="#1-puzzle-representation">1. Puzzle Representation</a></li>
+<li><a href="#2-solution-candidates">2. Solution Candidates</a></li>
+<li><a href="#3-genetic-algorithm">3. Genetic Algorithm</a></li>
+<li><a href="#4-island-model">4. Island Model</a></li>
+</ul>
+</li>
+<li><a href="#performance-results">Performance Results</a><ul>
+<li><a href="#44-puzzles">4×4 Puzzles</a></li>
+<li><a href="#55-and-66-puzzles">5×5 and 6×6 Puzzles</a></li>
+<li><a href="#key-findings">Key Findings</a></li>
+</ul>
+</li>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#example-usage">Example Usage</a></li>
+</ul>
+</li>
+<li><a href="#dependencies">Dependencies</a></li>
+<li><a href="#future-work">Future Work</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="about-futoshiki">About Futoshiki</h2>
+<p><strong>Futoshiki</strong> (不等式, meaning &quot;inequality&quot; in Japanese), also known as &quot;Unequal&quot;, is a logic puzzle similar to Sudoku but with inequality constraints between adjacent cells.</p>
+<h3 id="rules-">Rules:</h3>
+<ol>
+<li>The puzzle is played on an N × N square grid (commonly 4×4, 5×5, or 6×6)</li>
+<li>Some cells contain predefined numbers that cannot be changed</li>
+<li>Fill each cell with a number from 1 to N</li>
+<li>Each number must appear exactly once in every row</li>
+<li>Each number must appear exactly once in every column</li>
+<li>Some cells are separated by inequality signs (&lt; or &gt;) that indicate relative ordering between adjacent cells</li>
+<li>Any placed numbers must satisfy all given inequality constraints</li>
+<li>The puzzle has a unique solution that respects all constraints</li>
+</ol>
+<h2 id="project-features">Project Features</h2>
+<h3 id="core-implementation">Core Implementation</h3>
+<ul>
+<li><strong>FutoshikiPuzzle Class</strong>: Represents and handles puzzle instances with constraints</li>
+<li><strong>Individual Class</strong>: Represents candidate solutions in the genetic algorithm</li>
+<li><strong>Fitness Evaluation</strong>: Counts constraint violations (row, column, and inequality)</li>
+<li><strong>Genetic Operators</strong>: Crossover and mutation for solution evolution</li>
+</ul>
+<h3 id="evolutionary-algorithms">Evolutionary Algorithms</h3>
+<ol>
+<li><p><strong>Standard Genetic Algorithm</strong></p>
+<ul>
+<li>Population-based evolutionary approach</li>
+<li>Elitism strategy (preserves top 10% of individuals)</li>
+<li>Roulette wheel selection for parent selection</li>
+<li>Crossover and mutation operators</li>
+</ul>
+</li>
+<li><p><strong>Island Model Genetic Algorithm</strong></p>
+<ul>
+<li>Multiple isolated populations (islands)</li>
+<li>Independent evolution with periodic migration</li>
+<li>Ring topology for migration between islands</li>
+<li>Enhanced diversity and escape from local optima</li>
+</ul>
+</li>
+</ol>
+<h3 id="optimization-features">Optimization Features</h3>
+<ul>
+<li><strong>Grid Search</strong>: Systematic hyperparameter optimization</li>
+<li><strong>Performance Analysis</strong>: Fitness tracking and visualization</li>
+<li><strong>Multiple Puzzle Sizes</strong>: Support for 4×4, 5×5, and 6×6 grids</li>
+</ul>
+<h2 id="files-structure">Files Structure</h2>
+<pre><code>├── project.ipynb           # Main Jupyter notebook <span class="hljs-keyword">with</span> complete <span class="hljs-keyword">implementation</span>
+├── project_Straccialini.html  # HTML <span class="hljs-keyword">export</span> <span class="hljs-keyword">of</span> the notebook
+└── README.md              # This file
+</code></pre><h2 id="key-components">Key Components</h2>
+<h3 id="1-puzzle-representation">1. Puzzle Representation</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FutoshikiPuzzle</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, size, initial_grid, constraints)</span></span>:
+        <span class="hljs-comment"># Initialize puzzle with size, grid, and inequality constraints</span>
+</code></pre>
+<h3 id="2-solution-candidates">2. Solution Candidates</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Individual</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, puzzle)</span></span>:
+        <span class="hljs-comment"># Represents a candidate solution with fitness evaluation</span>
+        <span class="hljs-comment"># Implements crossover and mutation operators</span>
+</code></pre>
+<h3 id="3-genetic-algorithm">3. Genetic Algorithm</h3>
+<pre><code class="lang-python">def genetic_algorithm(puzzle, <span class="hljs-attr">population_size=100,</span> <span class="hljs-attr">generations=1000,</span> 
+                     <span class="hljs-attr">mutation_rate=0.1,</span> <span class="hljs-attr">verbose=False):</span>
+    <span class="hljs-comment"># Standard GA implementation with elitism and roulette wheel selection</span>
+</code></pre>
+<h3 id="4-island-model">4. Island Model</h3>
+<pre><code class="lang-python">def island_model_genetic_algorithm(puzzle, <span class="hljs-attr">islands=5,</span> <span class="hljs-attr">pop_per_island=50,</span> 
+                                  <span class="hljs-attr">generations=200,</span> <span class="hljs-attr">migration_interval=20,</span> 
+                                  <span class="hljs-attr">mutation_rate=0.1,</span> <span class="hljs-attr">verbose=False):</span>
+    <span class="hljs-comment"># Advanced GA with multiple populations and migration</span>
+</code></pre>
+<h2 id="performance-results">Performance Results</h2>
+<h3 id="4-4-puzzles">4×4 Puzzles</h3>
+<ul>
+<li>Standard GA: Excellent performance with proper hyperparameter tuning</li>
+<li>Optimal parameters found through grid search</li>
+<li>Consistent solution finding within reasonable generations</li>
+</ul>
+<h3 id="5-5-and-6-6-puzzles">5×5 and 6×6 Puzzles</h3>
+<ul>
+<li>Standard GA: Struggles with local optima, limited success</li>
+<li>Island Model: Significantly improved performance</li>
+<li>Successfully solves complex puzzles where standard GA fails</li>
+</ul>
+<h3 id="key-findings">Key Findings</h3>
+<ol>
+<li><strong>Population size matters</strong>: Larger populations maintain better genetic diversity</li>
+<li><strong>Mutation rate balance</strong>: 0.1-0.2 provides optimal exploration vs. exploitation</li>
+<li><strong>Island model superiority</strong>: Outperforms standard GA on larger, more complex puzzles</li>
+<li><strong>Genetic diversity</strong>: Critical for escaping local optima in constraint satisfaction problems</li>
+</ol>
+<h2 id="usage">Usage</h2>
+<ol>
+<li><strong>Open the Jupyter notebook</strong>: <code>project.ipynb</code></li>
+<li><strong>Run the cells sequentially</strong> to see the implementation and results</li>
+<li><strong>Modify puzzle instances</strong> or parameters to experiment with different configurations</li>
+<li><strong>Use the provided test puzzles</strong> or create your own following the format</li>
+</ol>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-python"># Define a <span class="hljs-number">4</span>x4 puzzle
+test_puzzle = FutoshikiPuzzle(
+    size=<span class="hljs-number">4</span>,
+    initial_grid=[[<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">4</span>]],
+    constraints=[((<span class="hljs-number">0</span>,<span class="hljs-number">0</span>), (<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)), ((<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)), ...]
+)
+
+# Solve with standard GA
+solution, generation, fitness_history = genetic_algorithm(
+    test_puzzle, 
+    population_size=<span class="hljs-number">1000</span>, 
+    generations=<span class="hljs-number">1000</span>, 
+    mutation_rate=<span class="hljs-number">0.1</span>
+)
+
+# Solve with island model
+solution, generation, fitness_history = island_model_genetic_algorithm(
+    test_puzzle,
+    islands=<span class="hljs-number">5</span>,
+    pop_per_island=<span class="hljs-number">200</span>,
+    generations=<span class="hljs-number">500</span>
+)
+</code></pre>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>Python 3.x</li>
+<li>matplotlib (for visualization)</li>
+<li>random (for stochastic operations)</li>
+<li>copy (for deep copying)</li>
+</ul>
+<h2 id="future-work">Future Work</h2>
+<p>Potential enhancements include:</p>
+<ul>
+<li><strong>Constraint-aware mutation</strong>: Operators that directly address violated constraints</li>
+<li><strong>Advanced crossover strategies</strong>: Preserving valid row/column permutations</li>
+<li><strong>Island model optimization</strong>: Fine-tuning topology, migration strategies, and parameters</li>
+<li><strong>Hybrid approaches</strong>: Combining with local search or constraint propagation</li>
+<li><strong>Parallel implementation</strong>: Leveraging multi-core processing for island populations</li>
+</ul>
+    13:["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-sm","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 p-6","children":["$","h3",null,{"ref":"$undefined","className":"text-2xl font-semibold leading-none tracking-tight","children":"Project Overview"}]}],["$","div",null,{"ref":"$undefined","className":"p-6 pt-0","children":["$","div",null,{"className":"prose prose-neutral dark:prose-invert max-w-none","children":["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$14"}}]}]}]]}]}],"$L15"]}]
+15:["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-sm","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 p-6","children":["$","h3",null,{"ref":"$undefined","className":"text-2xl font-semibold leading-none tracking-tight","children":"Project Details"}]}],["$","div",null,{"ref":"$undefined","className":"p-6 pt-0 space-y-4","children":[["$","div",null,{"className":"flex items-center gap-2","children":[["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-calendar w-4 h-4 text-muted-foreground","children":[["$","path","1cmpym",{"d":"M8 2v4"}],["$","path","4m81vk",{"d":"M16 2v4"}],["$","rect","1hopcy",{"width":"18","height":"18","x":"3","y":"4","rx":"2"}],["$","path","8toen8",{"d":"M3 10h18"}],"$undefined"]}],["$","span",null,{"className":"text-sm","children":["Completed in ","2025-07"]}]]}],["$","div",null,{"children":[["$","h4",null,{"className":"font-semibold mb-2","children":"Category"}],["$","div",null,{"className":"inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground","children":"Other"}]]}],["$","div",null,{"children":[["$","h4",null,{"className":"font-semibold mb-2","children":"Status"}],["$","div",null,{"className":"inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400","children":"completed"}]]}]]}]]}],["$","div",null,{"ref":"$undefined","className":"rounded-lg border bg-card text-card-foreground shadow-sm","children":[["$","div",null,{"ref":"$undefined","className":"flex flex-col space-y-1.5 p-6","children":["$","h3",null,{"ref":"$undefined","className":"text-2xl font-semibold leading-none tracking-tight","children":"Technologies Used"}]}],["$","div",null,{"ref":"$undefined","className":"p-6 pt-0","children":["$","div",null,{"className":"flex flex-wrap gap-2","children":[["$","div","Python",{"className":"inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80","children":"Python"}],["$","div","Evolutionary Algorithms",{"className":"inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80","children":"Evolutionary Algorithms"}],["$","div","Genetic Algorithms",{"className":"inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80","children":"Genetic Algorithms"}]]}]}]]}]]}]
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+a:{"metadata":[["$","title","0",{"children":"Samuele Nicolò Straccialini - AI Student & Developer"}],["$","meta","1",{"name":"description","content":"AI student building real-world solutions. Seeking internship opportunities in AI/ML and software development."}],["$","meta","2",{"name":"author","content":"Samuele Nicolò Straccialini"}],["$","meta","3",{"name":"keywords","content":"AI,Machine Learning,Software Development,Internship,Computer Science"}],["$","meta","4",{"property":"og:title","content":"Samuele Nicolò Straccialini - AI Student & Developer"}],["$","meta","5",{"property":"og:description","content":"AI student building real-world solutions. Seeking internship opportunities in AI/ML and software development."}],["$","meta","6",{"property":"og:type","content":"website"}],["$","meta","7",{"name":"twitter:card","content":"summary"}],["$","meta","8",{"name":"twitter:title","content":"Samuele Nicolò Straccialini - AI Student & Developer"}],["$","meta","9",{"name":"twitter:description","content":"AI student building real-world solutions. Seeking internship opportunities in AI/ML and software development."}]],"error":null,"digest":"$undefined"}
+f:"$a:metadata"
