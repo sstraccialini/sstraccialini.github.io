@@ -388,7 +388,7 @@ ul, ol {
   z-index: var(--z-fixed);
 }
 
-.mobile-nav.open {
+.mobile-nav--open {
   transform: translateX(0);
 }
 
@@ -774,18 +774,9 @@ main {
   outline-offset: 2px;
 }
 
-/* Project card filter animations */
-.project-card {
-  transition: opacity var(--transition-base), transform var(--transition-base);
-}
-
+/* Project card filter */
 .project-card.hidden {
   display: none;
-}
-
-.project-card.fade-out {
-  opacity: 0;
-  transform: scale(0.95);
 }
 
 /* --------------------------------------------------------------------------

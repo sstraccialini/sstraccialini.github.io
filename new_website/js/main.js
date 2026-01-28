@@ -309,18 +309,15 @@
       clickedTab.classList.add('active');
       clickedTab.setAttribute('aria-selected', 'true');
       
-      // Filter projects
+      // Filter projects with smooth animation
       this.projects.forEach(project => {
         const categories = project.dataset.category || '';
         const shouldShow = filter === 'all' || categories.includes(filter);
         
         if (shouldShow) {
-          project.classList.remove('hidden', 'fade-out');
+          project.classList.remove('hidden');
         } else {
-          project.classList.add('fade-out');
-          setTimeout(() => {
-            project.classList.add('hidden');
-          }, 200);
+          project.classList.add('hidden');
         }
       });
     }
