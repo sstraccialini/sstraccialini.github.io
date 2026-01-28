@@ -1,26 +1,30 @@
-# Assets/Images Directory
+# Images Directory
 
-This directory contains image assets for the website.
+Place your images here:
 
-## Structure
-- `avatar.jpg` - Profile picture for the hero section
-- `projects/` - Project screenshots and images
-- `icons/` - Custom icons and logos
+## Required Images
 
-## Usage
-Images in this directory can be referenced in components using:
-```tsx
-<img src="/assets/images/avatar.jpg" alt="Profile" />
-```
+1. **avatar.jpg** (or .png, .webp)
+   - Your profile photo for the hero section
+   - Recommended size: 400x400px minimum
+   - Aspect ratio: 1:1 (square)
+   - Update the `src` attribute in `index.html` hero section
 
-## Recommended Formats
-- **Photos**: JPG/JPEG for photographs
-- **Graphics**: PNG for graphics with transparency
-- **Icons**: SVG for scalable icons
-- **Logos**: SVG or PNG
+2. **og-image.jpg**
+   - Open Graph image for social sharing
+   - Recommended size: 1200x630px
+   - Update `og:image` meta tags in all HTML files
 
-## Optimization
-Consider optimizing images before adding them:
-- Compress images to reduce file size
-- Use appropriate dimensions for web display
-- Consider using Next.js Image component for automatic optimization
+## Optional Images
+
+- Project screenshots (for enhanced project cards)
+- Icons (if not using inline SVGs)
+
+## Performance Tips
+
+- Use WebP format when possible for smaller file sizes
+- Compress images using tools like:
+  - [Squoosh](https://squoosh.app/)
+  - [TinyPNG](https://tinypng.com/)
+- Use appropriate dimensions (don't serve 2000px images for 200px displays)
+- Consider using `loading="lazy"` for below-the-fold images

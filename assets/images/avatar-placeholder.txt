@@ -1,4 +1,0 @@
-# Placeholder for avatar image
-# Place your profile picture here as avatar.jpg
-# Recommended size: 256x256px or higher
-# Format: JPG, PNG, or WebP
