@@ -26,6 +26,9 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../css/styles.css">
+  
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
   <!-- Skip Link for Accessibility -->
@@ -93,36 +96,16 @@
           Back to Projects
         </a>
         
-        <header class="project-header">
-          <h1 class="project-header__title">SuBERT</h1>
-          <p class="project-header__description">End-to-end pipeline for recognizing and translating ancient Sumerian cuneiform using computer vision and Transformer-based models (BART, GPT, YOLO, Faster R-CNN).</p>
+        <header class="project-header" data-project-id="subert">
+          <h1 class="project-header__title"></h1>
+          <p class="project-header__description"></p>
           
           <div class="project-header__tags">
-            <span class="tag">Python</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">HuggingFace</span>
-            <span class="tag">BART</span>
-            <span class="tag">YOLO</span>
+            <!-- Tags loaded from projects-data.js -->
           </div>
           
           <div class="project-header__actions">
-            <a href="https://github.com/sstraccialini/AI-project-SuBERT" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-              <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                <path d="M9 18c-4.51 2-5-2-7-2"></path>
-              </svg>
-              View Code
-            </a>
-            <a href="https://github.com/sstraccialini/AI-project-SuBERT/blob/main/SuBERT-project_report.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
-              <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
-                <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                <path d="M10 9H8"></path>
-                <path d="M16 13H8"></path>
-                <path d="M16 17H8"></path>
-              </svg>
-              Read Report
-            </a>
+            <!-- Buttons loaded from projects-data.js -->
           </div>
         </header>
       </div>
@@ -135,55 +118,66 @@
           <!-- Main Content -->
           <div class="project-content">
             <article class="card">
-              <h2 class="card__title">Project Overview</h2>
-              <div class="prose">
-                <h3>Abstract</h3>
-                <p>SuBERT (Sumerian BERT) is an end-to-end pipeline designed to recognize and translate ancient Sumerian cuneiform tablets. The project combines state-of-the-art computer vision models for character detection with Transformer-based sequence-to-sequence models for translation.</p>
-                
-                <h3>The Challenge</h3>
-                <p>Sumerian is one of humanity's earliest written languages, dating back to approximately 3100 BCE. Translating ancient cuneiform tablets presents unique challenges:</p>
-                <ul>
-                  <li>Limited dataset availability</li>
-                  <li>Complex wedge-shaped characters</li>
-                  <li>Damaged or partially preserved tablets</li>
-                  <li>Multiple writing systems evolved over millennia</li>
-                </ul>
-                
-                <h3>Pipeline Architecture</h3>
-                <p>The SuBERT pipeline consists of three main stages:</p>
-                
-                <h4>1. Character Detection</h4>
-                <p>Using YOLOv5 and Faster R-CNN models to detect and localize individual cuneiform signs within tablet images. The models were trained on the SumTablets dataset, a curated collection of annotated tablet photographs.</p>
-                
-                <h4>2. Character Recognition (OCR)</h4>
-                <p>A custom CNN-based classifier identifies each detected cuneiform sign, mapping it to its Unicode representation or transliteration.</p>
-                
-                <h4>3. Machine Translation</h4>
-                <p>The recognized Sumerian text is then translated to English using fine-tuned Transformer models:</p>
-                <ul>
-                  <li><strong>BART:</strong> Bidirectional encoder for robust understanding</li>
-                  <li><strong>GPT-2:</strong> Autoregressive generation for fluent output</li>
-                  <li><strong>Custom Seq2Seq:</strong> Baseline comparison model</li>
-                </ul>
-                
-                <h3>Dataset: SumTablets</h3>
-                <p>We curated a dataset of Sumerian tablets with parallel translations, drawing from:</p>
-                <ul>
-                  <li>CDLI (Cuneiform Digital Library Initiative)</li>
-                  <li>ETCSL (Electronic Text Corpus of Sumerian Literature)</li>
-                  <li>Museum collections with digital catalogs</li>
-                </ul>
-                
-                <h3>Results</h3>
-                <p>The pipeline achieves promising results on held-out test sets, with the BART-based translation model showing the best performance in terms of BLEU score and human evaluation. The project demonstrates the potential of modern NLP techniques for preserving and understanding ancient languages.</p>
-                
-                <h3>Future Work</h3>
-                <ul>
-                  <li>Expand training data with more tablet images</li>
-                  <li>Incorporate attention visualization for interpretability</li>
-                  <li>Add support for other cuneiform languages (Akkadian, Hittite)</li>
-                  <li>Deploy as a web service for researchers</li>
-                </ul>
+              <div class="prose markdown-content">
+<!-- PASTE YOUR README MARKDOWN BELOW THIS LINE -->
+# AI Project
+This repository contains the project for the course `30562 - MACHINE LEARNING AND ARTIFICIAL INTELLIGENCE`, Bocconi University.
+
+**Abstract:**
+Recent advances in computer vision and natural language processing open new possibilities
+for reading and translating ancient cuneiform texts: in this work, we tackle one of the most
+ancient and obscure languages, spoken by the Sumerians, a grandiose civilization that flour-
+ished in the Near East around 2000 BCE and vanished millennia ago, leaving us with only
+a few scant testimonies. We focus on two main tasks: first, we exploit image-classification
+techniques to isolate and recognize individual characters from high-resolution tablet images.
+Then, we attempt to translate Sumerian into English via Transformer-like architectures.
+
+## Table of Contents
+
+- [AI Project](#ai-project)
+  - [Table of Contents](#table-of-contents)
+  - [Repository Structure](#repository-structure)
+  - [Datasets](#datasets)
+  - [Using `rclone` to access to cloud files](#using-rclone-to-access-to-cloud-files)
+  - [Installation](#installation)
+
+## Repository Structure
+This repository is structured in a way it is possible to create a full pipeline and replicate all the steps we followed while bulding our project.
+
+All folders and Jupyter notebooks are commented, to be as more accessible as possible for the reader.
+
+Folders (and files in each folder) are numbered, so that it is possible to ispect the content of each of them and run specific portion of our code for the desired task:
+
+- `1-dataset_operations`: contains all files necessary to download the datasets from HuggingFace and perform some cheks on data.
+- `2-vision_task_glyphs_recognition`: contains our attempts in recognizing through some object detection models.
+- `3-glyphs_translitteration`: contains the necessary files to convert glyphs from ASCII encoding to their translitterated version, which is the format on which translation models are trained (so it is useful to potentially create a full pipeline to translate Sumerian text detected from some images).
+- `4-translation`: contains all the models trained for translation.
+- `datasets`: contains the datasets we used in this project.
+- `fonts`: contains a Google Font file to print Sumerian unicode characters.
+- `z-temp`: contains some further failed attempts of producing different translation models.
+
+## Datasets
+Our project utilizes the SumTablets dataset (Version v1), a dataset curated by Cole Simmons, Richard Diehl Martinez, and Prof. Dan Jurafsky (2024). This resource, available from their [GitHub repository](https://github.com/colesimmons/SumTablets) and distributed though [HuggingFace](https://huggingface.co/datasets/colesimmons/sumtablets), is licensed under the Creative Commons Attribution 4.0 International, allowing for its adaptation and reuse with proper credit. You can read more about their work in the GitHub repository and in the related paper: [SumTablets: A Transliteration Dataset of Sumerian Tablets](https://aclanthology.org/2024.ml4al-1.20/) (Simmons et al., ML4AL 2024).
+
+## Using `rclone` to access to cloud files
+
+Large files may have been moved to a OneDrive folder due to space limitations. You can find them in the [shared folder](https://bocconi-my.sharepoint.com/:f:/g/personal/samuele_straccialini_studbocconi_it/EjLdGCkSWehAq587J8KcJ9YBEsersXTvplLDyZ8OBpLDfA?e=PW31EI).
+
+If you wish to access the shared folder and download datasets using `rclone`, please follow the following passages:
+- Copy the folder into your own OneDrive.
+- Install `rclone` on your machine: https://rclone.org/install/
+- Run `rclone config` in your terminal and connect it to your OneDrive.
+
+**Note:** if you wish to use our code to read and write in the folder, kindly name the remote "`onedrive_bocconi`" when running `rclone` configuration.
+
+## Installation
+
+To install the required dependencies, make sure you have Python 3.7+ installed, then run:
+
+```bash
+pip install -r requirements.txt
+```
+<!-- END OF MARKDOWN CONTENT -->
               </div>
             </article>
           </div>
@@ -192,27 +186,15 @@
           <aside class="project-sidebar">
             <div class="card">
               <h3 class="card__title">Project Details</h3>
-              <dl class="project-meta">
-                <dt>Completion Date</dt>
-                <dd>June 2023</dd>
-                <dt>Category</dt>
-                <dd>AI/ML, Computer Vision, NLP</dd>
-                <dt>Status</dt>
-                <dd><span class="badge badge--success">Completed</span></dd>
+              <dl class="project-meta" data-auto>
+                <!-- Loaded from projects-data.js -->
               </dl>
             </div>
             
             <div class="card">
               <h3 class="card__title">Technologies Used</h3>
-              <div class="tech-list">
-                <span class="tag">Python</span>
-                <span class="tag">PyTorch</span>
-                <span class="tag">HuggingFace</span>
-                <span class="tag">BART</span>
-                <span class="tag">GPT-2</span>
-                <span class="tag">YOLOv5</span>
-                <span class="tag">Faster R-CNN</span>
-                <span class="tag">OpenCV</span>
+              <div class="tech-list" data-auto>
+                <!-- Loaded from projects-data.js -->
               </div>
             </div>
           </aside>
@@ -233,7 +215,14 @@
     </div>
   </footer>
   
+  <!-- KaTeX for Math Rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  
+  <!-- Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
   <!-- JavaScript -->
+  <script src="../js/projects-data.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

@@ -26,6 +26,9 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../css/styles.css">
+  
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
   <!-- Skip Link for Accessibility -->
@@ -93,24 +96,16 @@
           Back to Projects
         </a>
         
-        <header class="project-header">
-          <h1 class="project-header__title">BrainFuck Interpreter</h1>
-          <p class="project-header__description">Optimized JavaScript Brainfuck interpreter with loop unrolling, precalculated jumps, and operator compression for faster execution.</p>
+        <header class="project-header" data-project-id="brainfuck-interpreter">
+          <h1 class="project-header__title"></h1>
+          <p class="project-header__description"></p>
           
           <div class="project-header__tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">Algorithms</span>
-            <span class="tag">Interpreter</span>
+            <!-- Tags loaded from projects-data.js -->
           </div>
           
           <div class="project-header__actions">
-            <a href="https://github.com/sstraccialini/brainfuck-interpreter-js" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-              <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                <path d="M9 18c-4.51 2-5-2-7-2"></path>
-              </svg>
-              View Code
-            </a>
+            <!-- Buttons loaded from projects-data.js -->
           </div>
         </header>
       </div>
@@ -123,51 +118,59 @@
           <!-- Main Content -->
           <div class="project-content">
             <article class="card">
-              <h2 class="card__title">Project Overview</h2>
-              <div class="prose">
-                <h3>What is Brainfuck?</h3>
-                <p>Brainfuck is an esoteric programming language created in 1993 by Urban Müller. Despite having only 8 commands, it is Turing-complete. The language operates on a tape of memory cells, each initially set to zero, with a data pointer and instruction pointer.</p>
-                
-                <h4>The 8 Commands</h4>
-                <table class="data-table">
-                  <thead>
-                    <tr><th>Command</th><th>Description</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td><code>&gt;</code></td><td>Move pointer right</td></tr>
-                    <tr><td><code>&lt;</code></td><td>Move pointer left</td></tr>
-                    <tr><td><code>+</code></td><td>Increment cell</td></tr>
-                    <tr><td><code>-</code></td><td>Decrement cell</td></tr>
-                    <tr><td><code>.</code></td><td>Output cell as ASCII</td></tr>
-                    <tr><td><code>,</code></td><td>Input character</td></tr>
-                    <tr><td><code>[</code></td><td>Jump forward if cell is 0</td></tr>
-                    <tr><td><code>]</code></td><td>Jump back if cell is not 0</td></tr>
-                  </tbody>
-                </table>
-                
-                <h3>Optimizations Implemented</h3>
-                
-                <h4>1. Precalculated Jump Table</h4>
-                <p>Instead of scanning for matching brackets at runtime, the interpreter builds a jump table during parsing. This reduces bracket matching from O(n) to O(1) per jump.</p>
-                
-                <h4>2. Operator Compression</h4>
-                <p>Consecutive identical operators are compressed into a single operation with a count. For example, <code>+++++</code> becomes a single "add 5" instruction.</p>
-                
-                <h4>3. Clear Loop Optimization</h4>
-                <p>The common pattern <code>[-]</code> (set cell to zero) is detected and replaced with a direct assignment, avoiding the loop entirely.</p>
-                
-                <h4>4. Copy/Multiply Loop Detection</h4>
-                <p>Loops that copy or multiply values between cells are detected and optimized to direct operations.</p>
-                
-                <h3>Performance</h3>
-                <p>These optimizations result in significant speedups compared to a naive interpreter, especially for complex programs like the Mandelbrot set generator.</p>
-                
-                <h3>Example: Hello World</h3>
-                <pre><code>++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>
-.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.</code></pre>
-                
-                <h3>Try It</h3>
-                <p>The interpreter includes a web interface where you can write and execute Brainfuck programs directly in your browser.</p>
+              <div class="prose markdown-content">
+<!-- PASTE YOUR README MARKDOWN BELOW THIS LINE -->
+# JavaScript BrainFuck interpreter
+
+A simple [brainfuck](https://esolangs.org/wiki/Brainfuck) interpreter with some optimizations written in JavaScript.
+
+## Language basics
+
+1. The runtime has an infinite tape, representing the memory of the program.
+2. The runtime maintains a program counter (`pc`) which tracks the position of the executing command in the program.
+3. The runtime maintains a data pointer (cell counter `cc`), which points to a specific location on the tape.
+4. There are 8 commands, made of only one character.
+
+Here are the commands (the pointer is `cc`):
+```bf
++ : increment value in memory at the pointer by 1
+
+- : decrement value in memory at the pointer by 1
+
+> : move the pointer to the right by 1
+
+< : move the pointer to the left by 1
+
+. : output (print) the byte at the pointer
+
+, : read byte input and store it into the cell at the pointer
+
+[ : If the byte at the pointer is zero, jump it forward to the command after the matching ] command.
+
+] : If the byte at pointer is nonzero, jump it back to the command after the matching [ command.
+```
+
+## Optimizations
+
+1. Operators `Ops` are introduced to translate the program into a different representation.
+2. Each bracket `[` and `]` is associated with the position the pointer will jump to. Precalculating jumps turn the dynamic searches into a simple lookup.
+3. Repeated sequences of instructions are replaced with a single operator which stores the number of times it needs to be executed.
+4. Sequences of the type `[-]`, which subtract one to the cell the pointer is pointing to, until its value is 0, are directly replaced with a `Zero` operator, which directly assigns the valu of 0 to the current cell.
+5. Loop unrolling: patterns of the type `[->++<]`, meaning: "move the pointer to the next cell, add 2, then move it back and subtract 1 to the current cell until its value is 0", can be simply replaced by simple mathematical operations of the type `cc[i+1] += NumberOfAddOperations * cc[i]`
+
+## Tests
+Experimental results on some standard brainfuck programs (available in test folder) show excellent results after applying all optimizations with respect to an unoptimized interpreter with up to 9 times faster execution. Below is the execution in milliseconds of some sample programs from the unoptimized -> optimized interpreter (note that 'hanoi' and 'mandel' base time is already calculated on some partially optimized version of the interpreter, since a base interpreter encounters memory errors and is not able to run it)
+```
+'hello': 206 -> 189
+'bench': 38118 -> 7299
+'hanoi': 46715 -> 5199
+'mandelbrot': 91413 -> 44933
+```
+
+---
+
+Other ideas of optimizations can be found on [this website](http://calmerthanyouare.org/2015/01/07/optimizing-brainfuck.html) togheter with some other test results.
+<!-- END OF MARKDOWN CONTENT -->
               </div>
             </article>
           </div>
@@ -176,24 +179,15 @@
           <aside class="project-sidebar">
             <div class="card">
               <h3 class="card__title">Project Details</h3>
-              <dl class="project-meta">
-                <dt>Completion Date</dt>
-                <dd>August 2021</dd>
-                <dt>Category</dt>
-                <dd>Software, Other</dd>
-                <dt>Status</dt>
-                <dd><span class="badge badge--success">Completed</span></dd>
+              <dl class="project-meta" data-auto>
+                <!-- Loaded from projects-data.js -->
               </dl>
             </div>
             
             <div class="card">
               <h3 class="card__title">Technologies Used</h3>
-              <div class="tech-list">
-                <span class="tag">JavaScript</span>
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">Interpreters</span>
-                <span class="tag">Compiler Optimization</span>
+              <div class="tech-list" data-auto>
+                <!-- Loaded from projects-data.js -->
               </div>
             </div>
           </aside>
@@ -214,7 +208,14 @@
     </div>
   </footer>
   
+  <!-- KaTeX for Math Rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  
+  <!-- Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
   <!-- JavaScript -->
+  <script src="../js/projects-data.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

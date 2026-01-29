@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>RepoSummarizer - Samuele Nicolò Straccialini</title>
+  <meta name="title" content="RepoSummarizer - Samuele Nicolò Straccialini">
+  <meta name="description" content="Statistical analysis and automated answer recognition system using Machine Learning with PCA and SVM-based classifiers.">
+  <meta name="author" content="Samuele Nicolò Straccialini">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sstraccialini.github.io/projects/repo-summarizer.html">
+  <meta property="og:title" content="RepoSummarizer - Samuele Nicolò Straccialini">
+  <meta property="og:description" content="Statistical analysis and automated answer recognition system using Machine Learning.">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://sstraccialini.github.io/projects/repo-summarizer.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <meta name="theme-color" content="#2563eb">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../css/styles.css">
+  
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="header__logo" aria-label="Samuele Nicolò Straccialini - Home">SNS</a>
+      
+      <nav class="nav" aria-label="Main navigation">
+        <a href="../index.html" class="nav__link">Home</a>
+        <a href="../about.html" class="nav__link">About</a>
+        <a href="../projects.html" class="nav__link active">Projects</a>
+        <a href="../contact.html" class="nav__link">Contact</a>
+      </nav>
+      
+      <div class="header__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="theme-toggle__icon theme-toggle__icon--light" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+        
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg class="menu-toggle__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="../index.html" class="mobile-nav__link">Home</a>
+    <a href="../about.html" class="mobile-nav__link">About</a>
+    <a href="../projects.html" class="mobile-nav__link active">Projects</a>
+    <a href="../contact.html" class="mobile-nav__link">Contact</a>
+  </nav>
+  
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Project Header -->
+    <section class="section">
+      <div class="container">
+        <a href="../projects.html" class="btn btn--secondary" style="margin-bottom: var(--space-6);">
+          <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 0.5rem; margin-left: 0;">
+            <path d="m12 19-7-7 7-7"></path>
+            <path d="M19 12H5"></path>
+          </svg>
+          Back to Projects
+        </a>
+        
+        <header class="project-header" data-project-id="repo-summarizer">
+          <h1 class="project-header__title"></h1>
+          <p class="project-header__description"></p>
+          
+          <div class="project-header__tags">
+            <!-- Tags loaded from projects-data.js -->
+          </div>
+          
+          <div class="project-header__actions">
+            <!-- Buttons loaded from projects-data.js -->
+          </div>
+        </header>
+      </div>
+    </section>
+    
+    <!-- Project Content -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="project-layout">
+          <!-- Main Content -->
+          <div class="project-content">
+            <article class="card">
+              <div class="prose markdown-content">
+<!-- PASTE YOUR README MARKDOWN BELOW THIS LINE -->
+
+# RepoSummarizer
+
+> An AI-powered tool that automatically generates comprehensive documentation, summaries, and visual overviews for any public GitHub repository.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+- [Architecture](#architecture)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Overview
+
+Understanding an unfamiliar codebase is often time-consuming and frustrating. Documentation may be outdated, incomplete, or missing entirely. Traditional tools typically summarize individual files without providing the broader architectural context developers need.
+
+**RepoSummarizer** solves this problem by combining static analysis with AI-powered insights to deliver a holistic understanding of any public GitHub repository, as if a knowledgeable teammate were walking you through the code.
+
+### The Problem We Solve
+
+- **Onboarding Delays**: New team members spend days or weeks understanding legacy codebases
+- **Incomplete Documentation**: Existing docs often lag behind actual code changes
+- **Context Gaps**: File-level tools miss architectural patterns and component relationships
+- **Evaluation Friction**: Assessing third-party libraries requires deep code diving
+
+### Our Solution
+
+RepoSummarizer analyzes repository structure, source code, commit history, and metadata to generate:
+- High-level project summaries
+- Module and file-level documentation
+- Visual architecture diagrams
+- Interactive HTML reports
+- Contribution guidelines based on detected patterns
+
+## Key Features
+
+### Intelligent Repository Analysis
+- Automatically detects project structure, languages, and frameworks
+- Identifies entry points, configuration files, and key components
+- Analyzes commit history and contributor activity patterns
+- Triages files intelligently to focus on important code
+
+### AI-Generated Documentation
+- High-level project purpose and architecture overview
+- Module-by-module descriptions with dependency mapping
+- File-level summaries with key functions and classes
+- Auto-generated "Getting Started" guides based on conventions
+- Identifies extension points and contribution opportunities
+
+### Visual Representations
+- Interactive directory structure diagrams (Mermaid)
+- Module dependency graphs
+- Commit activity timelines
+- Language distribution charts
+- Component relationship visualizations
+
+### Multiple Output Formats
+- **Markdown**: Clean documentation for READMEs and wikis
+- **HTML**: Interactive reports with embedded visualizations
+- **JSON**: Structured data for programmatic integration
+- **Diagrams**: Exportable Mermaid or SVG charts
+
+### Performance Optimization
+- Intelligent file triage to reduce processing time
+- GPU-accelerated local LLM inference
+- Caching layer for repeated analysis
+- Batched MAP-then-REDUCE processing for large repositories
+
+## Installation
+
+### Prerequisites
+
+- **Python 3.10+** ([Download](https://www.python.org/downloads/))
+- **Git** installed and available in PATH
+- **8GB+ RAM** recommended for local LLM inference
+- **GPU** (optional) for faster AI processing
+
+### Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/sstraccialini/repo-summarizer.git
+   cd repo-summarizer
+   ```
+
+2. **Create a virtual environment**
+   
+   **Windows (PowerShell):**
+   ```powershell
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   ```
+   
+   **macOS/Linux:**
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+
+4. **Download an LLM model** (optional, will auto-download if not present)
+   ```bash
+   # Model will be automatically downloaded from Hugging Face on first run
+   # Or manually place a GGUF model in ./models/
+   ```
+
+For detailed installation instructions and troubleshooting, see [INSTALL.md](INSTALL.md).
+
+## Quick Start
+
+Analyze any public GitHub repository with a single command:
+
+```bash
+python main.py https://github.com/username/repo.git
+```
+
+The tool will:
+1. Clone the repository
+2. Scan and analyze the codebase
+3. Triage important files
+4. Generate AI-powered summaries
+5. Create visualizations
+6. Output reports to `SUMMARY.html` and `SUMMARY.md`
+
+### Example Output
+
+After processing, you'll find:
+- `SUMMARY.html` - Interactive web report with all visualizations
+- `SUMMARY.md` - Markdown documentation
+
+Open `SUMMARY.html` in your browser for the full interactive experience!
+
+## Usage
+
+### Basic Usage
+
+```bash
+python main.py <repository-url>
+```
+
+### Advanced Options
+
+```bash
+python main.py <repository-url> \
+  --output custom_output.md \
+  --model-path ./models/custom-model.gguf \
+  --max-tokens 4096
+```
+
+### Some Available Options
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--output` | Output Markdown file path | `SUMMARY.md` |
+| `--html-output` | Output HTML file path | `SUMMARY.html` |
+| `--model-path` | Path to GGUF model file | Auto-detect |
+| `--max-tokens` | Maximum tokens per summary | Auto-detect |
+| `--no-cache` | Disable summary caching | `false` |
+| `--max-depth` | Limit directory scan depth | Unlimited |
+| `--ignore-folders` | Folders to ignore | None |
+
+Run `python main.py --help` for the full list of options.
+
+### Interactive Model Selection
+
+If multiple models are detected, you'll be prompted to choose one. You may download your preferred model from [Hugging Face](https://huggingface.co/models?search=gguf) and place it in the `./models/` directory, or run the tool to auto-download a default model.
+
+## Architecture
+
+```
+repo-summarizer/
+├── src/
+│   ├── core/           # Core configuration and data models
+│   │   ├── config.py   # SummarizerConfig, ModelConfig
+│   │   ├── models.py   # Data structures (FileInfo, RepoInfo)
+│   │   └── paths.py    # Path constants
+│   ├── llm/            # LLM model handling
+│   │   ├── model_client.py      # LlamaClient wrapper
+│   │   ├── model_discovery.py   # Model detection
+│   │   ├── model_selector.py    # Interactive selection
+│   │   └── param_optimizer.py   # GPU optimization
+│   ├── triage/         # File selection and analysis
+│   │   ├── scanner.py       # Repository scanning
+│   │   ├── triage.py        # File prioritization
+│   │   └── schema.py        # Metadata schemas
+│   ├── summarization/  # AI summarization pipeline
+│   │   ├── prompts.py       # LLM prompt templates
+│   │   ├── batching.py      # MAP-then-REDUCE processing
+│   │   └── doc_builder.py   # Documentation generation
+│   ├── rendering/      # Output generation
+│   │   ├── visualizer.py    # Mermaid diagram generation
+│   │   ├── html_report.py   # HTML report rendering
+│   │   └── artifacts.py     # Artifact management
+│   └── utils/          # Utility functions
+│       ├── git_utils.py     # Git operations
+│       ├── cache.py         # SQLite caching
+│       └── formatting.py    # CLI output
+├── tests/              # Test suite
+├── main.py            # Entry point
+└── requirements.txt   # Dependencies
+```
+
+### Key Components
+
+- **Triage Engine**: Intelligently selects files for analysis using heuristics and optional LLM filtering
+- **LLM Client**: Abstraction layer supporting local GGUF models with GPU acceleration
+- **Batch Processor**: MAP-then-REDUCE pattern for efficient large repository processing
+- **Cache Layer**: SQLite-based caching to avoid redundant processing
+- **Visualizer**: Generates Mermaid diagrams and interactive HTML reports
+
+## Examples
+
+Some examples can be found in the [examples/](examples/) folder.
+
+## Contributing
+
+### Quick Contribution Guide
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/new-feature`
+3. Commit your changes: `git commit -m 'Add new feature'`
+4. Push to the branch: `git push origin feature/new-feature`
+5. Open a Pull Request
+
+### Development Setup
+
+```bash
+# Install development dependencies
+pip install -r requirements.txt
+
+# Run tests
+pytest tests/
+```
+
+## Acknowledgments
+
+Built with:
+- [llama-cpp-python](https://github.com/abetlen/llama-cpp-python) - Local LLM inference
+- [GitPython](https://github.com/gitpython-developers/GitPython) - Git integration
+- [Mermaid](https://mermaid.js.org/) - Diagram generation
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+<!-- END OF MARKDOWN CONTENT -->
+              </div>
+            </article>
+          </div>
+          
+          <!-- Sidebar -->
+          <aside class="project-sidebar">
+            <div class="card">
+              <h3 class="card__title">Project Details</h3>
+              <dl class="project-meta" data-auto>
+                <!-- Loaded from projects-data.js -->
+              </dl>
+            </div>
+            
+            <div class="card">
+              <h3 class="card__title">Technologies Used</h3>
+              <div class="tech-list" data-auto>
+                <!-- Loaded from projects-data.js -->
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copyright">© 2025 Samuele Nicolò Straccialini. All rights reserved.</p>
+      <div class="footer__links">
+        <a href="https://github.com/sstraccialini" target="_blank" rel="noopener noreferrer" class="footer__link">GitHub</a>
+        <a href="https://www.linkedin.com/in/samuele-nicolo-straccialini/" target="_blank" rel="noopener noreferrer" class="footer__link">LinkedIn</a>
+        <a href="mailto:stra.samuele@gmail.com" class="footer__link">Email</a>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- KaTeX for Math Rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  
+  <!-- Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <!-- JavaScript -->
+  <script src="../js/projects-data.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

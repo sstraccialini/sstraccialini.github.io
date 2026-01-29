@@ -26,6 +26,9 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../css/styles.css">
+  
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
   <!-- Skip Link for Accessibility -->
@@ -93,24 +96,16 @@
           Back to Projects
         </a>
         
-        <header class="project-header">
-          <h1 class="project-header__title">Futoshiki Puzzle Solver</h1>
-          <p class="project-header__description">Puzzle solver using genetic algorithms and island models to tackle complex constraint satisfaction problems through evolutionary programming.</p>
+        <header class="project-header" data-project-id="futoshiki-puzzle-solver">
+          <h1 class="project-header__title"></h1>
+          <p class="project-header__description"></p>
           
           <div class="project-header__tags">
-            <span class="tag">Python</span>
-            <span class="tag">Evolutionary Algorithms</span>
-            <span class="tag">Genetic Algorithms</span>
+            <!-- Tags loaded from projects-data.js -->
           </div>
           
           <div class="project-header__actions">
-            <a href="https://github.com/sstraccialini/Futoshiki-Solver-using-Evolutionary-Programming" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-              <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                <path d="M9 18c-4.51 2-5-2-7-2"></path>
-              </svg>
-              View Code
-            </a>
+            <!-- Buttons loaded from projects-data.js -->
           </div>
         </header>
       </div>
@@ -123,52 +118,193 @@
           <!-- Main Content -->
           <div class="project-content">
             <article class="card">
-              <h2 class="card__title">Project Overview</h2>
-              <div class="prose">
-                <h3>What is Futoshiki?</h3>
-                <p>Futoshiki (不等式, "inequality") is a logic puzzle similar to Sudoku. The goal is to fill a grid with numbers such that:</p>
-                <ul>
-                  <li>Each row contains all numbers from 1 to N exactly once</li>
-                  <li>Each column contains all numbers from 1 to N exactly once</li>
-                  <li>All inequality constraints between adjacent cells are satisfied</li>
-                </ul>
-                
-                <h3>The Challenge</h3>
-                <p>Futoshiki is a constraint satisfaction problem (CSP) that becomes computationally challenging as grid size increases. Traditional backtracking algorithms can be slow for larger puzzles with many constraints.</p>
-                
-                <h3>Evolutionary Approach</h3>
-                <p>This project uses genetic algorithms with an island model to solve Futoshiki puzzles:</p>
-                
-                <h4>Chromosome Representation</h4>
-                <p>Each candidate solution (chromosome) is represented as a 2D array where each row is a permutation of numbers 1 to N. This guarantees row constraints are always satisfied.</p>
-                
-                <h4>Fitness Function</h4>
-                <p>The fitness measures the number of constraint violations:</p>
-                <ul>
-                  <li>Column uniqueness violations</li>
-                  <li>Inequality constraint violations</li>
-                </ul>
-                <p>A perfect solution has fitness 0.</p>
-                
-                <h4>Genetic Operators</h4>
-                <ul>
-                  <li><strong>Selection:</strong> Tournament selection with elitism</li>
-                  <li><strong>Crossover:</strong> Row-wise crossover preserving permutation structure</li>
-                  <li><strong>Mutation:</strong> Swap mutation within rows</li>
-                </ul>
-                
-                <h4>Island Model</h4>
-                <p>Multiple populations evolve independently on separate "islands" with occasional migration of best individuals. This helps maintain diversity and avoid premature convergence.</p>
-                
-                <h3>Results</h3>
-                <p>The evolutionary approach successfully solves most standard Futoshiki puzzles (5x5, 6x6, 7x7) within reasonable time. The island model significantly improved convergence compared to a single-population GA.</p>
-                
-                <h3>Key Learnings</h3>
-                <ul>
-                  <li>Importance of constraint-aware representation</li>
-                  <li>Parameter tuning for population size and mutation rates</li>
-                  <li>Benefits of parallel evolution with migration</li>
-                </ul>
+              <div class="prose markdown-content">
+<!-- PASTE YOUR README MARKDOWN BELOW THIS LINE -->
+# Futoshiki Puzzle Solver using Evolutionary Programming
+
+## Overview
+
+This project implements an **Evolutionary Programming** approach to solve **Futoshiki puzzles**, a Japanese logic-based combinatorial number puzzle. The solver uses genetic algorithms and advanced techniques like island models to tackle the complex constraint satisfaction problem that Futoshiki presents.
+
+
+This project was developed for the course `30592 -Topics in Computational Modelling - From Information Theory to Evolutionary Models`, Bocconi University.
+
+## Table of Contents
+- [Futoshiki Puzzle Solver using Evolutionary Programming](#futoshiki-puzzle-solver-using-evolutionary-programming)
+  - [Overview](#overview)
+  - [Table of Contents](#table-of-contents)
+  - [About Futoshiki](#about-futoshiki)
+    - [Rules:](#rules)
+  - [Project Features](#project-features)
+    - [Core Implementation](#core-implementation)
+    - [Evolutionary Algorithms](#evolutionary-algorithms)
+    - [Optimization Features](#optimization-features)
+  - [Files Structure](#files-structure)
+  - [Key Components](#key-components)
+    - [1. Puzzle Representation](#1-puzzle-representation)
+    - [2. Solution Candidates](#2-solution-candidates)
+    - [3. Genetic Algorithm](#3-genetic-algorithm)
+    - [4. Island Model](#4-island-model)
+  - [Performance Results](#performance-results)
+    - [4×4 Puzzles](#44-puzzles)
+    - [5×5 and 6×6 Puzzles](#55-and-66-puzzles)
+    - [Key Findings](#key-findings)
+  - [Usage](#usage)
+    - [Example Usage](#example-usage)
+  - [Dependencies](#dependencies)
+  - [Future Work](#future-work)
+
+
+## About Futoshiki
+
+**Futoshiki** (不等式, meaning "inequality" in Japanese), also known as "Unequal", is a logic puzzle similar to Sudoku but with inequality constraints between adjacent cells.
+
+### Rules:
+1. The puzzle is played on an N × N square grid (commonly 4×4, 5×5, or 6×6)
+2. Some cells contain predefined numbers that cannot be changed
+3. Fill each cell with a number from 1 to N
+4. Each number must appear exactly once in every row
+5. Each number must appear exactly once in every column
+6. Some cells are separated by inequality signs (< or >) that indicate relative ordering between adjacent cells
+7. Any placed numbers must satisfy all given inequality constraints
+8. The puzzle has a unique solution that respects all constraints
+
+## Project Features
+
+### Core Implementation
+- **FutoshikiPuzzle Class**: Represents and handles puzzle instances with constraints
+- **Individual Class**: Represents candidate solutions in the genetic algorithm
+- **Fitness Evaluation**: Counts constraint violations (row, column, and inequality)
+- **Genetic Operators**: Crossover and mutation for solution evolution
+
+### Evolutionary Algorithms
+1. **Standard Genetic Algorithm**
+   - Population-based evolutionary approach
+   - Elitism strategy (preserves top 10% of individuals)
+   - Roulette wheel selection for parent selection
+   - Crossover and mutation operators
+
+2. **Island Model Genetic Algorithm**
+   - Multiple isolated populations (islands)
+   - Independent evolution with periodic migration
+   - Ring topology for migration between islands
+   - Enhanced diversity and escape from local optima
+
+### Optimization Features
+- **Grid Search**: Systematic hyperparameter optimization
+- **Performance Analysis**: Fitness tracking and visualization
+- **Multiple Puzzle Sizes**: Support for 4×4, 5×5, and 6×6 grids
+
+## Files Structure
+
+```
+├── project.ipynb           # Main Jupyter notebook with complete implementation
+├── project_Straccialini.html  # HTML export of the notebook
+└── README.md              # This file
+```
+
+## Key Components
+
+### 1. Puzzle Representation
+```python
+class FutoshikiPuzzle:
+    def __init__(self, size, initial_grid, constraints):
+        # Initialize puzzle with size, grid, and inequality constraints
+```
+
+### 2. Solution Candidates
+```python
+class Individual:
+    def __init__(self, puzzle):
+        # Represents a candidate solution with fitness evaluation
+        # Implements crossover and mutation operators
+```
+
+### 3. Genetic Algorithm
+```python
+def genetic_algorithm(puzzle, population_size=100, generations=1000, 
+                     mutation_rate=0.1, verbose=False):
+    # Standard GA implementation with elitism and roulette wheel selection
+```
+
+### 4. Island Model
+```python
+def island_model_genetic_algorithm(puzzle, islands=5, pop_per_island=50, 
+                                  generations=200, migration_interval=20, 
+                                  mutation_rate=0.1, verbose=False):
+    # Advanced GA with multiple populations and migration
+```
+
+## Performance Results
+
+### 4×4 Puzzles
+- Standard GA: Excellent performance with proper hyperparameter tuning
+- Optimal parameters found through grid search
+- Consistent solution finding within reasonable generations
+
+### 5×5 and 6×6 Puzzles
+- Standard GA: Struggles with local optima, limited success
+- Island Model: Significantly improved performance
+- Successfully solves complex puzzles where standard GA fails
+
+### Key Findings
+1. **Population size matters**: Larger populations maintain better genetic diversity
+2. **Mutation rate balance**: 0.1-0.2 provides optimal exploration vs. exploitation
+3. **Island model superiority**: Outperforms standard GA on larger, more complex puzzles
+4. **Genetic diversity**: Critical for escaping local optima in constraint satisfaction problems
+
+## Usage
+
+1. **Open the Jupyter notebook**: `project.ipynb`
+2. **Run the cells sequentially** to see the implementation and results
+3. **Modify puzzle instances** or parameters to experiment with different configurations
+4. **Use the provided test puzzles** or create your own following the format
+
+### Example Usage
+```python
+# Define a 4x4 puzzle
+test_puzzle = FutoshikiPuzzle(
+    size=4,
+    initial_grid=[[2, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 4]],
+    constraints=[((0,0), (1,0)), ((1,1), (1,2)), ...]
+)
+
+# Solve with standard GA
+solution, generation, fitness_history = genetic_algorithm(
+    test_puzzle, 
+    population_size=1000, 
+    generations=1000, 
+    mutation_rate=0.1
+)
+
+# Solve with island model
+solution, generation, fitness_history = island_model_genetic_algorithm(
+    test_puzzle,
+    islands=5,
+    pop_per_island=200,
+    generations=500
+)
+```
+
+## Dependencies
+
+- Python 3.x
+- matplotlib (for visualization)
+- random (for stochastic operations)
+- copy (for deep copying)
+
+## Future Work
+
+Potential enhancements include:
+- **Constraint-aware mutation**: Operators that directly address violated constraints
+- **Advanced crossover strategies**: Preserving valid row/column permutations
+- **Island model optimization**: Fine-tuning topology, migration strategies, and parameters
+- **Hybrid approaches**: Combining with local search or constraint propagation
+- **Parallel implementation**: Leveraging multi-core processing for island populations
+
+---
+
+*For detailed implementation, results, and analysis, please refer to the complete Jupyter notebook `project.ipynb`.*<!-- END OF MARKDOWN CONTENT -->
               </div>
             </article>
           </div>
@@ -177,24 +313,15 @@
           <aside class="project-sidebar">
             <div class="card">
               <h3 class="card__title">Project Details</h3>
-              <dl class="project-meta">
-                <dt>Completion Date</dt>
-                <dd>November 2022</dd>
-                <dt>Category</dt>
-                <dd>AI/ML, Software</dd>
-                <dt>Status</dt>
-                <dd><span class="badge badge--success">Completed</span></dd>
+              <dl class="project-meta" data-auto>
+                <!-- Loaded from projects-data.js -->
               </dl>
             </div>
             
             <div class="card">
               <h3 class="card__title">Technologies Used</h3>
-              <div class="tech-list">
-                <span class="tag">Python</span>
-                <span class="tag">NumPy</span>
-                <span class="tag">Genetic Algorithms</span>
-                <span class="tag">Island Model</span>
-                <span class="tag">Evolutionary Computing</span>
+              <div class="tech-list" data-auto>
+                <!-- Loaded from projects-data.js -->
               </div>
             </div>
           </aside>
@@ -215,7 +342,14 @@
     </div>
   </footer>
   
+  <!-- KaTeX for Math Rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  
+  <!-- Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
   <!-- JavaScript -->
+  <script src="../js/projects-data.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

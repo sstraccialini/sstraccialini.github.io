@@ -26,6 +26,9 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../css/styles.css">
+  
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
   <!-- Skip Link for Accessibility -->
@@ -134,51 +137,55 @@
           <!-- Main Content -->
           <div class="project-content">
             <article class="card">
-              <h2 class="card__title">Project Overview</h2>
-              <div class="prose">
-                <h3>About the Project</h3>
-                <p>This project was developed in collaboration with the Hephaestus Applied AI Association to create an automated system for grading multiple-choice quiz sheets. The system uses computer vision and machine learning to detect and classify marked answers.</p>
-                
-                <h3>Problem Statement</h3>
-                <p>Manual grading of multiple-choice exams is time-consuming and error-prone. Our goal was to build a robust, accurate, and fast system that could:</p>
-                <ul>
-                  <li>Process scanned images of answer sheets</li>
-                  <li>Detect the location of each answer bubble</li>
-                  <li>Classify whether each bubble is marked or unmarked</li>
-                  <li>Calculate final scores automatically</li>
-                </ul>
-                
-                <h3>Technical Approach</h3>
-                
-                <h4>1. Image Preprocessing</h4>
-                <p>Raw scanned images undergo several preprocessing steps:</p>
-                <ul>
-                  <li>Grayscale conversion</li>
-                  <li>Gaussian blur for noise reduction</li>
-                  <li>Adaptive thresholding</li>
-                  <li>Perspective correction using corner detection</li>
-                </ul>
-                
-                <h4>2. Bubble Detection</h4>
-                <p>Using OpenCV's contour detection and Hough Circle Transform, we identify the location of each answer bubble on the sheet. The grid structure is then reconstructed based on expected positions.</p>
-                
-                <h4>3. Feature Extraction with PCA</h4>
-                <p>Each detected bubble region is extracted and processed. Principal Component Analysis (PCA) is applied to reduce dimensionality while preserving the most discriminative features for classification.</p>
-                
-                <h4>4. Classification with SVM</h4>
-                <p>A Support Vector Machine (SVM) classifier is trained to distinguish between:</p>
-                <ul>
-                  <li>Fully marked bubbles</li>
-                  <li>Partially marked bubbles</li>
-                  <li>Unmarked (empty) bubbles</li>
-                  <li>Erased/corrected marks</li>
-                </ul>
-                
-                <h3>Results</h3>
-                <p>The system achieved over 98% accuracy on our test dataset of scanned answer sheets. Edge cases involving smudges, erasures, and partial marks were handled with high reliability.</p>
-                
-                <h3>Team</h3>
-                <p>This project was a collaborative effort with the Hephaestus Applied AI Association, a student organization focused on practical applications of artificial intelligence.</p>
+              <div class="prose markdown-content">
+<!-- PASTE YOUR README MARKDOWN BELOW THIS LINE -->
+# Automatic Quiz Scoring
+
+## Presentation
+This project was created by Bocconi's **<font color="purple">Hephaestus Applied Artificial Intelligence Association</font>** during Spring 2024 period. In this repository you can find the final paper with a detailed explanation of motivations, execution and results of our research. If you wish to investigate the code we used to conduct our analysis you can find all the scripts in the present repository. For some help in navigating the repository, please have a look at the [last section](#navigator).
+
+## Description
+The objective of this project is to provide a comprehensive statistical analysis of responses collecteds from the "Campionati della Cultura e del Talento", an annual competition designed for Italian high school students. This contest involves a series of 50 multiple-choice questions, covering a range of topics that vary each year. Following the administration of the quiz, teachers grade the paper answer sheets and forward the scores along with scanned copies of the completed quizzes to the hosting association. Traditionally, the association selects a random subset of these quizzes for detailed analysis to extract data and insights.
+
+Conversely, this project aims to enhance the scope of analysis by including all submitted scores. To achieve this, a program equipped with advanced letter recognition capabilities was developed, facilitating the precise classification and organisation of data into a well-structured table. This method allows for a more thorough and accurate evaluation of the competition’s outcomes.
+
+## Dataset
+The original dataset is composed of photos or scanned documents of the tests. In order to use we needed to normalize images and extract letters from them in order to train a classifier. Details can be found in the <code>main.ipynb</code> file. 
+
+## Classification
+To reduce dimensionality of our datapoints we applied Principal Component Analysis (PCA), to convert a 11140 × 37440 dimensional array into a 11140 × 400 one, with the least possible data loss.
+To classify our data we then tried Support Vector Machine and Stochastic Gradient Descent classifiers. Hyperparameters of both algorithms were tuned using cross-validated GridSearch. Finally, SVM model revealed to be the best-performing one. 
+
+Theoretical details on these procedures can be found in the <code>report.pdf</code> file
+
+
+
+## How to navigate this repository? <a name="navigator"></a>
+Here's the structure and content of this repository:
+
+```
+├───0_raw_dataset       - where to upload dataset
+├───1_files             - where JPEG files are stored
+├───2_cropped           - where answer tables only are stored
+├───3_labelling_img     - where single-letter images are stored
+├───cascade             - contains the Haar Classifier
+│   └───classifier
+├───poppler-24.02.0     - needed for PDF to JPEG conversion
+├───<b>predict             - look at this folder README if you want to use the trained classifier
+│   └───files</b>
+├───site                - PHP sites created for manual labelling
+├─IMG.csv               - output csv table after labelling
+├─PCA_model.pkl         - PCA model parameters
+├─SVC_model.pkl         - SVM model parameters
+├─<b>main.ipynb            - The main file containing data preprocessing, analysis and classifier training, testing</b>
+├─mask.png              - mask applied to answer tables
+├─report.pdf            - the official report describing our work
+```
+
+If you wish to have a look at our analysis (from data preparation to classifier) and reproduce it, you can go through the <code>main.ipynb</code> file. If instead you just want to apply the classifier to your own data, please download the entire repository and follow the instructions in the <code>/predict</code> folder.
+
+**NOTE:** For privacy reasons, the original dataset has been removed from this repository.
+<!-- END OF MARKDOWN CONTENT -->
               </div>
             </article>
           </div>
@@ -187,28 +194,15 @@
           <aside class="project-sidebar">
             <div class="card">
               <h3 class="card__title">Project Details</h3>
-              <dl class="project-meta">
-                <dt>Completion Date</dt>
-                <dd>December 2022</dd>
-                <dt>Category</dt>
-                <dd>AI/ML, Computer Vision</dd>
-                <dt>Status</dt>
-                <dd><span class="badge badge--success">Completed</span></dd>
-                <dt>Organization</dt>
-                <dd>Hephaestus AI Association</dd>
+              <dl class="project-meta" data-auto>
+                <!-- Loaded from projects-data.js -->
               </dl>
             </div>
             
             <div class="card">
               <h3 class="card__title">Technologies Used</h3>
-              <div class="tech-list">
-                <span class="tag">Python</span>
-                <span class="tag">OpenCV</span>
-                <span class="tag">NumPy</span>
-                <span class="tag">scikit-learn</span>
-                <span class="tag">PCA</span>
-                <span class="tag">SVM</span>
-                <span class="tag">Matplotlib</span>
+              <div class="tech-list" data-auto>
+                <!-- Loaded from projects-data.js -->
               </div>
             </div>
           </aside>
@@ -229,7 +223,14 @@
     </div>
   </footer>
   
+  <!-- KaTeX for Math Rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  
+  <!-- Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
   <!-- JavaScript -->
+  <script src="../js/projects-data.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

@@ -26,6 +26,9 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../css/styles.css">
+  
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
   <!-- Skip Link for Accessibility -->
@@ -93,25 +96,16 @@
           Back to Projects
         </a>
         
-        <header class="project-header">
-          <h1 class="project-header__title">Particle Escape (Brownian Motion)</h1>
-          <p class="project-header__description">Simulation study exploring the escape of a particle from an intracellular region using Brownian motion dynamics and statistical analysis.</p>
+        <header class="project-header" data-project-id="escape-particle-bm">
+          <h1 class="project-header__title"></h1>
+          <p class="project-header__description"></p>
           
           <div class="project-header__tags">
-            <span class="tag">Python</span>
-            <span class="tag">NumPy</span>
-            <span class="tag">pandas</span>
-            <span class="tag">Simulation</span>
+            <!-- Tags loaded from projects-data.js -->
           </div>
           
           <div class="project-header__actions">
-            <a href="https://github.com/sstraccialini/Escape-of-a-Particle-Brownian-Motion" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-              <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                <path d="M9 18c-4.51 2-5-2-7-2"></path>
-              </svg>
-              View Code
-            </a>
+            <!-- Buttons loaded from projects-data.js -->
           </div>
         </header>
       </div>
@@ -124,45 +118,190 @@
           <!-- Main Content -->
           <div class="project-content">
             <article class="card">
-              <h2 class="card__title">Project Overview</h2>
-              <div class="prose">
-                <h3>Introduction</h3>
-                <p>This project models the stochastic process of a particle escaping from a confined intracellular region, inspired by problems in molecular biology and biophysics. Brownian motion (or Wiener process) is used to simulate the random movement of particles in a fluid environment.</p>
-                
-                <h3>The Physical Problem</h3>
-                <p>In biological systems, molecules must often escape from one compartment to another. Understanding the statistics of escape times is crucial for:</p>
-                <ul>
-                  <li>Drug delivery and absorption rates</li>
-                  <li>Cellular signaling processes</li>
-                  <li>Ion channel dynamics</li>
-                  <li>Protein folding kinetics</li>
-                </ul>
-                
-                <h3>Mathematical Model</h3>
-                <p>The particle's motion is governed by the Langevin equation:</p>
-                <p style="text-align: center; font-family: var(--font-family-mono);">
-                  dx = √(2D) · dW(t)
-                </p>
-                <p>Where D is the diffusion coefficient and W(t) is a standard Wiener process. The boundary conditions define the confined region, and we track when the particle first exits this region.</p>
-                
-                <h3>Simulation Approach</h3>
-                <ul>
-                  <li><strong>Discrete time steps:</strong> Using Euler-Maruyama method for SDE integration</li>
-                  <li><strong>Boundary handling:</strong> Absorbing and reflecting boundary conditions</li>
-                  <li><strong>Monte Carlo sampling:</strong> Running thousands of trajectories to build escape time distributions</li>
-                </ul>
-                
-                <h3>Analysis Performed</h3>
-                <ol>
-                  <li>Mean First Passage Time (MFPT) calculation</li>
-                  <li>Escape time distribution fitting (exponential, Gamma)</li>
-                  <li>Dependence on diffusion coefficient</li>
-                  <li>Effect of boundary geometry</li>
-                  <li>Comparison with analytical solutions where available</li>
-                </ol>
-                
-                <h3>Key Findings</h3>
-                <p>The simulation results align well with theoretical predictions for simple geometries. The project demonstrates how computational methods can provide insights into complex stochastic processes that may not have closed-form solutions.</p>
+              <div class="prose markdown-content">
+<!-- PASTE YOUR README MARKDOWN BELOW THIS LINE -->
+# Escape of a Particle from an Intracellular Region
+
+A computational study of Brownian motion escape dynamics in confined circular domains.
+
+This research was developed as part of the course `30561 Stochastic Processes and Simulations in Natural Sciences`, Bocconi University.
+
+## Overview
+
+This project investigates the escape dynamics of a particle undergoing Brownian motion within a two-dimensional circular domain. The particle is confined within a circle of radius `r` and can only exit through a small opening defined by an angular width `θ`. We study how the mean exit time depends on various parameters, particularly the opening angle.
+
+
+## Table of Contents
+- [Escape of a Particle from an Intracellular Region](#escape-of-a-particle-from-an-intracellular-region)
+  - [Overview](#overview)
+  - [Table of Contents](#table-of-contents)
+  - [Theoretical Background](#theoretical-background)
+    - [Brownian Motion](#brownian-motion)
+    - [Problem Setup](#problem-setup)
+  - [Key Findings](#key-findings)
+    - [1. Mean Exit Time Scaling](#1-mean-exit-time-scaling)
+    - [2. Exit Time Distribution](#2-exit-time-distribution)
+    - [3. Spatial Exit Patterns](#3-spatial-exit-patterns)
+    - [4. Reflection Analysis](#4-reflection-analysis)
+  - [Implementation](#implementation)
+    - [Core Functions](#core-functions)
+    - [Simulation Parameters](#simulation-parameters)
+  - [Usage](#usage)
+    - [Basic Simulation](#basic-simulation)
+    - [Parameter Studies](#parameter-studies)
+  - [Results Visualization](#results-visualization)
+  - [Dependencies](#dependencies)
+  - [File Structure](#file-structure)
+  - [Applications](#applications)
+  - [Theoretical Validation](#theoretical-validation)
+  - [Future Extensions](#future-extensions)
+
+
+
+## Theoretical Background
+
+### Brownian Motion
+The particle movement follows Brownian motion, a continuous-time stochastic process `X = (X_t)_{t ∈ [0, ∞)}` with variance `σ²`, satisfying:
+- `P(X_0 = 0) = 1` (starts at origin)
+- Almost sure continuity
+- Stationary and independent increments
+- `X_t ~ N(0, σ²t)` for every `t ∈ [0, ∞)`
+
+### Problem Setup
+- **Domain**: Circular region of radius `r`
+- **Escape condition**: Exit through opening of angular width `θ`
+- **Boundary behavior**: Elastic reflection at walls (except at the opening)
+- **Initial condition**: Particle starts at the center or specified position
+
+## Key Findings
+
+### 1. Mean Exit Time Scaling
+The mean exit time `τ` follows the relationship:
+```
+τ ∝ r²/θ
+```
+- **Inversely proportional** to opening angle `θ`
+- **Quadratically proportional** to domain radius `r`
+- **Inversely proportional** to diffusion coefficient `D`
+
+### 2. Exit Time Distribution
+- **Right-skewed distribution** with exponential decay
+- Most particles escape quickly, with a long tail for delayed escapes
+- Distribution shape independent of opening size, but scale varies
+
+### 3. Spatial Exit Patterns
+- Small openings: concentrated exit points near opening edges
+- Large openings: more uniform distribution across the opening
+- Edge effects become prominent for wider openings
+
+### 4. Reflection Analysis
+- **Inverse relationship** between opening size and reflection count
+- Narrow openings require extensive boundary exploration
+- Wide openings minimize particle-wall interactions
+
+## Implementation
+
+### Core Functions
+
+1. **`plot_circle(r, theta)`**: Visualizes the circular domain with opening
+2. **`intersection(x, y, x_prev, y_prev, r)`**: Calculates line-circle intersections
+3. **`check_exit(x, y, x_prev, y_prev, theta, r)`**: Determines if particle escaped
+4. **`movement(x, y, x_prev, y_prev, theta, r)`**: Handles boundary reflections
+5. **`Brownian_stepmove(...)`**: Simulates single Brownian motion step
+6. **`simulate_particle(...)`**: Runs complete escape simulation
+
+### Simulation Parameters
+
+- **Time step**: `dt = 0.01`
+- **Diffusion coefficient**: `D = 1.0` (adjustable)
+- **Domain radius**: `r = 1.0` (adjustable)
+- **Opening angles**: Range from `π/16` to `2π`
+- **Simulation limit**: `T_lim = 1000` time units
+
+## Usage
+
+### Basic Simulation
+```python
+# Simulate single particle escape
+exit_time = simulate_particle(
+    x0=0.0, y0=0.0,      # Initial position
+    D=1.0,               # Diffusion coefficient
+    dt=0.01,             # Time step
+    theta=np.pi/4,       # Opening angle
+    r=1,                 # Circle radius
+    T_lim=1000,          # Time limit
+    make_plot=True       # Visualization
+)
+```
+
+### Parameter Studies
+```python
+# Study mean exit time vs opening angle
+theta_values = np.linspace(np.pi/16, np.pi*2, 30)
+for theta in theta_values:
+    exit_times = []
+    for i in range(10000):
+        exit_time = simulate_particle(theta=theta, ...)
+        exit_times.append(exit_time)
+    mean_exit_time = np.mean(exit_times)
+```
+
+## Results Visualization
+
+The project includes comprehensive visualizations:
+
+1. **Trajectory plots**: Individual particle paths with reflections
+2. **Exit time histograms**: Distribution analysis for different parameters
+3. **Scaling relationships**: Mean exit time vs. opening angle, radius, diffusion coefficient
+4. **Spatial distributions**: Polar histograms of exit locations
+5. **Survival curves**: Temporal escape probability analysis
+6. **Time-lapse snapshots**: Multi-particle evolution over time
+
+## Dependencies
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.stats import linregress
+from scipy.optimize import curve_fit
+import fractions
+```
+
+## File Structure
+
+```
+project/
+├── project.ipynb          # Main Jupyter notebook with analysis
+├── project.html           # HTML export of notebook
+└── README.md             # This file
+```
+
+## Applications
+
+This research has applications in:
+- **Cell biology**: Understanding molecular transport in cellular compartments
+- **Materials science**: Diffusion in porous media with selective barriers
+- **Physics**: First-passage time problems in confined geometries
+- **Engineering**: Design of filtration and separation systems
+
+## Theoretical Validation
+
+Our simulations confirm several theoretical predictions:
+- Power-law scaling relationships
+- Exponential survival probability decay
+- Markovian escape process characteristics
+- Geometric effects on boundary interactions
+
+## Future Extensions
+
+Potential improvements and extensions:
+- Non-circular geometries
+- Multiple openings
+- Position-dependent diffusion coefficients
+- External force fields
+- Three-dimensional domains
+<!-- END OF MARKDOWN CONTENT -->
               </div>
             </article>
           </div>
@@ -171,24 +310,15 @@
           <aside class="project-sidebar">
             <div class="card">
               <h3 class="card__title">Project Details</h3>
-              <dl class="project-meta">
-                <dt>Completion Date</dt>
-                <dd>May 2022</dd>
-                <dt>Category</dt>
-                <dd>Data Science, Simulation</dd>
-                <dt>Status</dt>
-                <dd><span class="badge badge--success">Completed</span></dd>
+              <dl class="project-meta" data-auto>
+                <!-- Loaded from projects-data.js -->
               </dl>
             </div>
             
             <div class="card">
               <h3 class="card__title">Technologies Used</h3>
-              <div class="tech-list">
-                <span class="tag">Python</span>
-                <span class="tag">NumPy</span>
-                <span class="tag">pandas</span>
-                <span class="tag">Matplotlib</span>
-                <span class="tag">SciPy</span>
+              <div class="tech-list" data-auto>
+                <!-- Loaded from projects-data.js -->
               </div>
             </div>
           </aside>
@@ -209,7 +339,14 @@
     </div>
   </footer>
   
+  <!-- KaTeX for Math Rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  
+  <!-- Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
   <!-- JavaScript -->
+  <script src="../js/projects-data.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

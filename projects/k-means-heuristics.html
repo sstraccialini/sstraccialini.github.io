@@ -26,6 +26,9 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../css/styles.css">
+  
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
 </head>
 <body>
   <!-- Skip Link for Accessibility -->
@@ -93,35 +96,16 @@
           Back to Projects
         </a>
         
-        <header class="project-header">
-          <h1 class="project-header__title">K-Means Clustering Heuristics</h1>
-          <p class="project-header__description">Bachelor's thesis exploring novel heuristics for efficient and accurate k-means clustering, including a proposed extended-Hartigan algorithm and its empirical evaluation on classic datasets.</p>
+        <header class="project-header" data-project-id="k-means-heuristics">
+          <h1 class="project-header__title"></h1>
+          <p class="project-header__description"></p>
           
           <div class="project-header__tags">
-            <span class="tag">Python</span>
-            <span class="tag">scikit-learn</span>
-            <span class="tag">Optimization</span>
-            <span class="tag">Machine Learning</span>
+            <!-- Tags loaded from projects-data.js -->
           </div>
           
           <div class="project-header__actions">
-            <a href="https://github.com/sstraccialini/k-means" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-              <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                <path d="M9 18c-4.51 2-5-2-7-2"></path>
-              </svg>
-              View Code
-            </a>
-            <a href="https://github.com/sstraccialini/k-means/blob/main/Tesi-final.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
-              <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
-                <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                <path d="M10 9H8"></path>
-                <path d="M16 13H8"></path>
-                <path d="M16 17H8"></path>
-              </svg>
-              Read Thesis
-            </a>
+            <!-- Buttons loaded from projects-data.js -->
           </div>
         </header>
       </div>
@@ -134,85 +118,156 @@
           <!-- Main Content -->
           <div class="project-content">
             <article class="card">
-              <h2 class="card__title">Project Overview</h2>
-              <div class="prose">
-                <h3>Abstract</h3>
-                <p>In this thesis we present some classic heuristics for the construction and improvement of a solution to the Minimum-sum-of-squares Clustering Problem (MSSC). We then propose a modified version of the extended-Hartigan algorithm, and provide an empirical analysis in terms of running time and quality of the solution, comparing different combinations of heuristics on some classic datasets.</p>
-                
-                <p>The K-Means problem, also known as Minimum-sum-of-squares Clustering (MSSC), is one of the most important clustering problems. Its goal is to partition a dataset of observations into K groups, called clusters, such that each observation is associated with the cluster whose centroid (center of mass, or "mean" of the cluster) is closest to it. The objective is to minimize the total squared distance from each point to the center of its cluster. The general problem is NP-Hard even with K = 2, so heuristics must be used in practice.</p>
-                
-                <h3>Proposed Algorithm: Extended-Hartigan</h3>
-                <p>The algorithm proposed is based on the principle of moving a point from one cluster to another only if the objective function decreases. Unlike the classic Lloyd's algorithm that works in two phases (assignment and update), this method performs incremental updates that can lead to faster convergence and better local optima.</p>
-                
-                <h4>Pseudocode</h4>
-                <pre><code>Algorithm: ext-Hartigan (Initialization, K, max_it)
-  i ← 0
-  X ← Initialization(K)
-  converged ← False
-  
-  WHILE i < max_it AND NOT converged DO
-    converged ← True
-    FOR EACH x ∈ X DO
-      δ_best = +∞
-      h_best = cluster(x)
-      
-      FOR h ∈ {1,...,K} DO
-        δ = cost_of_move(x, cluster(x), h)
-        IF δ < δ_best THEN
-          δ_best ← δ
-          h_best ← h
-      
-      IF h_best ≠ cluster(x) THEN
-        converged ← False
-        move_to_cluster(x, h_best)
-    i ← i + 1
-  
-  RETURN X</code></pre>
-                
-                <h3>Experimental Setup</h3>
-                <p>The algorithms were tested on classic clustering datasets:</p>
-                <ul>
-                  <li><strong>A-Sets (A1-A3):</strong> Synthetic datasets with varying cluster sizes</li>
-                  <li><strong>Bridge:</strong> Real-world dataset with complex structure</li>
-                  <li><strong>House:</strong> Standard benchmark dataset</li>
-                </ul>
-                
-                <h3>Results</h3>
-                <p>The extended-Hartigan algorithm, when combined with intelligent initialization strategies (K-Means++ or random farthest), consistently achieved better objective function values compared to the standard Lloyd's algorithm, while maintaining competitive running times.</p>
-                
-                <h3>Key References</h3>
-                <ol>
-                  <li>Lloyd, S. (1982). "Least squares quantization in PCM"</li>
-                  <li>Hartigan, J.A. & Wong, M.A. (1979). "A K-Means Clustering Algorithm"</li>
-                  <li>Arthur, D. & Vassilvitskii, S. (2007). "K-means++: The Advantages of Careful Seeding"</li>
-                  <li>Hamerly, G. & Elkan, C. (2002). "Alternatives to the K-Means Algorithm That Find Better Clusterings"</li>
-                </ol>
+              <div class="prose markdown-content">
+<!-- PASTE YOUR README MARKDOWN BELOW THIS LINE -->
+# An exploration of novel heuristics for efficient and accurate $k$-means clustering
+
+This repository contains the code written to develop and test the algorithms described in my Bachelor's final thesis.
+
+## Table of Contents
+- [An exploration of novel heuristics for efficient and accurate $k$-means clustering](#an-exploration-of-novel-heuristics-for-efficient-and-accurate-k-means-clustering)
+  - [Table of Contents](#table-of-contents)
+  - [Abstract](#abstract)
+  - [Repository Structure](#repository-structure)
+  - [Extended-Hartigan pseudocode](#extended-hartigan-pseudocode)
+  - [Datasets](#datasets)
+  - [References](#references)
+
+## Abstract
+
+$K$-means is one of the most widely-used algorithms to perform clustering and exploratory data analysis, since it allows identifying relevant patterns in data. Its objective is to partition a set of observations into a predetermined number of clusters, by minimizing the within-cluster sum of squares (WCSS). However, this optimization problem is NP-hard, necessitating the use of heuristic algorithms for practical applications. The most common heuristic, Lloyd's algorithm, is simple and efficient, but at the same time it is highly susceptible to converging to suboptimal local minima, with its performance being heavily dependent on the centroids' initial positions. While alternatives, such as Hartigan's algorithm, have been proven to find better (lower-cost) solutions, they are often significantly slower and more computationally intensive.
+
+This thesis introduces and evaluates a novel heuristic, "extended-Hartigan", designed to bridge this gap by reducing the computational complexity of the standard Hartigan's method while retaining its ability to find high-quality clusterings. The proposed algorithm deviates from the standard single-point update rule. Instead, it first identifies all candidate data points whose reassignment would individually decrease the total cost, following Hartigan's procedure, and then attempts to apply this entire list of reassignments in a single "unsafe" batch update. If this aggressive update fails to lower the overall cost, the algorithm reverts the changes and proceeds in a "safe" mode, accepting a limited subset of non-conflicting reassignments to guarantee a monotonic cost reduction in that iteration.
+
+To validate this approach, we conduct an empirical study comparing extended-Hartigan and its hybrid "mixed-mode" variants against the classical Lloyd's and Hartigan's algorithms. The evaluation spans several benchmark datasets, which feature diverse numbers of samples, dimensions, and cluster counts. The comparison is performed using multiple initialization techniques, including maximin, $k$-means++, and greedy $k$-means++, and performance is assessed based on the final cost, computational efficiency, and clustering stability. The results demonstrate that the proposed methods consistently find clusterings with a lower final cost than Lloyd's algorithm, achieving a significant cost reduction on the most complex datasets. Moreover, extended-Hartigan avoids the computational instability inherent in the standard Hartigan algorithm, showing a cost profile closer to the efficient Lloyd's baseline and successfully preventing extreme cost increases. The findings indicate that the extended-Hartigan algorithm is a robust and efficient alternative that successfully balances the trade-off between solution quality and computational expense, offering a practical and powerful alternative for $k$-means clustering.
+
+## Repository Structure
+Here's the structure of this repository:
+
+- `data`: contains some datasets on which the algorithms where tested.
+- `iter_records`: contains some records of safe and unsafe iterations using our proposed `extended-hartigan` algorithm, mainly for an illustrative scope.
+- `latex`: contains the latex-formatted tables of results which are included in the Appendix of the final work.
+- `misc`: contains a bunch of experimental code, proofs-of-concept (PoCs), and isolated tests developed during the main project's lifecycle. The code within this folder is not part of the final application, is not actively maintained, and can be safely ignored for any production build. It serves as a development 'sandbox' for trying out new ideas.
+- `profiling`: contains some profiling code to speed up the algorithms; used during development phase.
+- `tests`: contains all tests results.
+- `utils`: contains some other useful code which is not directly related with the developed algorithms (such as code for results visualization and so on...).
+- `Abstract.txt`: the abstract of the final work
+- **`kmeans.ipynb`: the actual notebook containing all algorithms developed.**
+- `Tesi-final.pdf`: the final version of my thesis work.
+
+## Extended-Hartigan pseudocode
+
+One of the main contribution of this work is the algorithm we called `extended-Hartigan`. Here follows its pseudocode.
+
+```
+choose k = number of centroids
+
+assign points to each centroid randomly
+move the centroid to the mean of points assigned to it
+
+repeat:
+    for each datapoint d ∈ c
+        for each centroid c' ≠ c
+            compute Δcost(d; c → c')
+            | if result is negative, store in a candidates list
+            | if candidate is already in list keep the reassignment with minimum Δcost
+        end for
+    end for
+
+    if "unsafe mode":
+        accept all candidates
+        if overall cost did not decrease
+            revert changes and proceed in "safe mode"
+    else if "safe mode"
+        sort all candidates (minimum first)
+        accept them in order if the corresponding clusters have not been involved
+ 
+until convergence
+```
+
+## Datasets
+
+The main datasets used in this work where *A-Sets* from a research project by Karkkainen
+and Franti [KF02], Bridge and House, from a work by Franti, Rezaei, and Zhao [FRZ14]. These, and other datasets which are used for clustering tasks, are available in the following website: https://cs.joensuu.fi/sipu/datasets/.
+
+## References
+
+[AV07] David Arthur and Sergei Vassilvitskii. “K-Means++: The Advantages of Careful
+Seeding”. In: vol. 8. Jan. 2007, pp. 1027–1035. doi: 10.1145/1283383.1283494.
+
+[Bha+19] Anup Bhattacharya et al. Noisy, Greedy and Not So Greedy k-means++. Dec.
+2019. doi: 10.48550/arXiv.1912.00653. url: http://arxiv.org/abs/1912.00653.
+
+[Elk03] Charles Elkan. “Using the triangle inequality to accelerate k-means”. In: Proceed-
+ings of the Twentieth International Conference on International Conference on
+Machine Learning. ICML’03. Washington, DC, USA: AAAI Press, 2003, pp. 147–
+153. isbn: 1577351894.
+
+[FRZ14] Pasi Franti, Mohammad Rezaei, and Qinpei Zhao. “Centroid index: Cluster level
+similarity measure”. en. In: Pattern Recognition 47.9 (Sept. 2014), pp. 3034–
+3045. issn: 00313203. doi: 10 . 1016 / j . patcog . 2014 . 03 . 017. url: https://linkinghub.elsevier.com/retrieve/pii/S0031320314001150.
+
+[Gru+22] Christoph Grunau et al. A Nearly Tight 0Analysis of Greedy k-means++. July
+2022. doi: 10.48550/arXiv.2207.07949. url: http://arxiv.org/abs/2207.07949.
+
+[Har75] John A. Hartigan. Clustering algorithms. eng. A Wiley publication in applied
+statistics. New York: Wiley, 1975. isbn: 9780471356455.
+
+[HW79] J. A. Hartigan and M. A. Wong. “Algorithm AS 136: A K-Means Clustering Algo-
+rithm”. In: Journal of the Royal Statistical Society. Series C (Applied Statistics)
+28.1 (1979), pp. 100–108. issn: 00359254, 14679876. url: http://www.jstor.org/stable/2346830.
+
+[KF02] Ismo Karkkainen and Pasi Franti. Dynamic local search algorithm for the cluster-
+ing problem. eng. Report series / University of Joensuu, Department of Computer
+Science. A, 2002-6. OCLC: 58380784. Joensuu: University of Joensuu, 2002. isbn:
+9789524581431.
+
+[Llo82] S. Lloyd. “Least squares quantization in PCM”. en. In: IEEE Transactions on
+Information Theory 28.2 (Mar. 1982), pp. 129–137. issn: 0018-9448. doi: 10.
+1109 / TIT . 1982 . 1056489. url: http://ieeexplore.ieee.org/document/1056489/.
+
+[NF16] James Newling and Francois Fleuret. “Fast k-means with accurate bounds”.
+en. In: Proceedings of The 33rd International Conference on Machine Learning.
+PMLR, June 2016, pp. 936–944. url: https://proceedings.mlr.press/v48/newling16.html.
+
+[SB14] Shai Shalev-Shwartz and Shai Ben-David. Understanding machine learning: from
+theory to algorithms. eng. New York: Cambridge university press, 2014. isbn:
+9781107057135.
+
+[Sci] Scikit-learn. KMeans. en. url: https://scikit-learn/stable/modules/generated/sklearn.cluster.KMeans.html.
+
+[TV10] Matus Telgarsky and Andrea Vattani. “Hartigan’s Method: k-means Clustering
+without Voronoi”. In: Proceedings of the Thirteenth International Conference on
+Artificial Intelligence and Statistics. Ed. by Yee Whye Teh and Mike Titterington.
+Vol. 9. Proceedings of Machine Learning Research. Chia Laguna Resort, Sardinia,
+Italy: PMLR, May 2010, pp. 820–827. url: https://proceedings.mlr.press/v9/telgarsky10a.html.
+
+[Wu+08] Xindong Wu et al. “Top 10 algorithms in data mining”. en. In: Knowledge and
+Information Systems 14.1 (Jan. 2008), pp. 1–37. issn: 0219-1377, 0219-3116. doi:
+10.1007/s10115-007-0114-2. url: http://link.springer.com/10.1007/s10115-007-0114-2.
+
+[Xia+22] Shuyin Xia et al. “Ball kk-Means: Fast Adaptive Clustering With No Bounds”.
+In: IEEE Transactions on Pattern Analysis and Machine Intelligence 44.1 (Jan.
+2022), pp. 87–99. issn: 1939-3539. doi: 10.1109/TPAMI.2020.3008694. url:
+https://ieeexplore.ieee.org/document/9139397.
+<!-- END OF MARKDOWN CONTENT -->
               </div>
             </article>
           </div>
-          
+
           <!-- Sidebar -->
           <aside class="project-sidebar">
             <div class="card">
               <h3 class="card__title">Project Details</h3>
-              <dl class="project-meta">
-                <dt>Completion Date</dt>
-                <dd>March 2023</dd>
-                <dt>Category</dt>
-                <dd>AI/ML, Data Science</dd>
-                <dt>Status</dt>
-                <dd><span class="badge badge--success">Completed</span></dd>
+              <dl class="project-meta" data-auto>
+                <!-- Loaded from projects-data.js -->
               </dl>
             </div>
             
             <div class="card">
               <h3 class="card__title">Technologies Used</h3>
-              <div class="tech-list">
-                <span class="tag">Python</span>
-                <span class="tag">NumPy</span>
-                <span class="tag">scikit-learn</span>
-                <span class="tag">Matplotlib</span>
-                <span class="tag">Pandas</span>
+              <div class="tech-list" data-auto>
+                <!-- Loaded from projects-data.js -->
               </div>
             </div>
           </aside>
@@ -233,7 +288,14 @@
     </div>
   </footer>
   
+  <!-- KaTeX for Math Rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  
+  <!-- Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
   <!-- JavaScript -->
+  <script src="../js/projects-data.js"></script>
   <script src="../js/main.js"></script>
 </body>
 </html>

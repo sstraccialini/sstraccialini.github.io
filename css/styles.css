@@ -160,6 +160,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem; /* Account for fixed header */
   -webkit-text-size-adjust: 100%;
 }
 
@@ -943,6 +944,19 @@ main {
   line-height: var(--line-height-relaxed);
 }
 
+.prose h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-2);
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+}
+
 .prose h3 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
@@ -972,6 +986,41 @@ main {
 
 .prose li {
   margin-bottom: var(--space-2);
+}
+
+.prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--color-primary-dark);
+}
+
+.prose strong {
+  font-weight: var(--font-weight-semibold);
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--color-primary);
+  padding-left: var(--space-4);
+  margin: var(--space-4) 0;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  margin: var(--space-4) 0;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-8) 0;
 }
 
 .prose pre {
@@ -1012,6 +1061,18 @@ main {
 .prose th {
   background: var(--color-bg-muted);
   font-weight: var(--font-weight-semibold);
+}
+
+/* Math blocks (KaTeX) */
+.prose .math-block {
+  display: block;
+  text-align: center;
+  margin: var(--space-4) 0;
+  overflow-x: auto;
+}
+
+.prose .math-inline {
+  display: inline;
 }
 
 /* --------------------------------------------------------------------------
