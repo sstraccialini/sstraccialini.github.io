@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://sstraccialini.github.io/projects.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -22,6 +22,30 @@
     <loc>https://sstraccialini.github.io/contact.html</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sstraccialini.github.io/projects/3d-scene-reconstruction.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sstraccialini.github.io/projects/pydeia.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sstraccialini.github.io/projects/dialects.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sstraccialini.github.io/projects/aso-temba.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>

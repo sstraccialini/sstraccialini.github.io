@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>3D Scene Reconstruction - Samuele Nicolò Straccialini</title>
+  <meta name="title" content="3D Scene Reconstruction - Samuele Nicolò Straccialini">
+  <meta name="description" content="Multi-view 3D reconstruction through camera calibration, feature matching, pose estimation, and interactive point cloud visualization.">
+  <meta name="author" content="Samuele Nicolò Straccialini">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sstraccialini.github.io/projects/3d-scene-reconstruction.html">
+  <meta property="og:title" content="3D Scene Reconstruction - Samuele Nicolò Straccialini">
+  <meta property="og:description" content="Multi-view 3D reconstruction through camera calibration, feature matching, pose estimation, and interactive point cloud visualization.">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://sstraccialini.github.io/projects/3d-scene-reconstruction.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <meta name="theme-color" content="#2563eb">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../css/styles.css">
+  
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="header__logo" aria-label="Samuele Nicolò Straccialini - Home">SNS</a>
+      
+      <nav class="nav" aria-label="Main navigation">
+        <a href="../index.html" class="nav__link">Home</a>
+        <a href="../about.html" class="nav__link">About</a>
+        <a href="../projects.html" class="nav__link active">Projects</a>
+        <a href="../contact.html" class="nav__link">Contact</a>
+      </nav>
+      
+      <div class="header__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="theme-toggle__icon theme-toggle__icon--light" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+        
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg class="menu-toggle__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="../index.html" class="mobile-nav__link">Home</a>
+    <a href="../about.html" class="mobile-nav__link">About</a>
+    <a href="../projects.html" class="mobile-nav__link active">Projects</a>
+    <a href="../contact.html" class="mobile-nav__link">Contact</a>
+  </nav>
+  
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Project Header -->
+    <section class="section">
+      <div class="container">
+        <a href="../projects.html" class="btn btn--secondary" style="margin-bottom: var(--space-6);">
+          <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 0.5rem; margin-left: 0;">
+            <path d="m12 19-7-7 7-7"></path>
+            <path d="M19 12H5"></path>
+          </svg>
+          Back to Projects
+        </a>
+        
+        <header class="project-header" data-project-id="3d-scene-reconstruction">
+          <h1 class="project-header__title">3D Scene Reconstruction</h1>
+          <p class="project-header__description">Multi-view 3D reconstruction through camera calibration, feature matching, pose estimation, and interactive point cloud visualization.</p>
+          
+          <div class="project-header__tags">
+            <!-- Tags loaded from projects-data.js -->
+          </div>
+          
+          <div class="project-header__actions">
+            <!-- Buttons loaded from projects-data.js -->
+          </div>
+        </header>
+      </div>
+    </section>
+    
+    <!-- Project Content -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="project-layout">
+          <!-- Main Content -->
+          <div class="project-content">
+            <article class="card">
+              <div class="prose">
+<h2>Overview</h2>
+<p>This project turns photographs from multiple viewpoints into an interactive 3D point cloud. It connects camera calibration, image correspondences, and geometric reconstruction in a single computer vision pipeline.</p>
+<h2>Reconstruction Pipeline</h2>
+<ol>
+  <li><strong>Calibrate the camera:</strong> estimate lens distortion and camera intrinsics from checkerboard images, removing unreliable calibration views.</li>
+  <li><strong>Match image features:</strong> combine SIFT, corners, edges, optical flow, and manually annotated correspondences.</li>
+  <li><strong>Recover geometry:</strong> compare a custom normalized eight-point RANSAC solver with OpenCV's five-point method, then recover camera poses and triangulate points.</li>
+  <li><strong>Fuse views:</strong> align stereo reconstructions and normalize their scale to reveal regions hidden from a single image pair.</li>
+</ol>
+<h2>Explore the Results</h2>
+<p>Plotly visualizations let you inspect the reconstructed scene from different angles:</p>
+<ul>
+  <li><a href="../assets/interactive-3d-reconstruction.html">Wide-baseline reconstruction</a></li>
+  <li><a href="../assets/interactive-3d-reconstruction-cr.html">Short-baseline reconstruction</a></li>
+  <li><a href="../assets/interactive-3d-reconstruction-three-view.html">Three-view reconstruction</a></li>
+</ul>
+<p>The <a href="https://github.com/raffaele233/3D-Scene-Reconstruction">GitHub repository</a> includes the notebook, annotation tools, and a report documenting the experiments.</p>
+              </div>
+            </article>
+          </div>
+          
+          <!-- Sidebar -->
+          <aside class="project-sidebar">
+            <div class="card">
+              <h3 class="card__title">Project Details</h3>
+              <dl class="project-meta" data-auto>
+                <!-- Loaded from projects-data.js -->
+              </dl>
+            </div>
+            
+            <div class="card">
+              <h3 class="card__title">Technologies Used</h3>
+              <div class="tech-list" data-auto>
+                <!-- Loaded from projects-data.js -->
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copyright">© 2025 Samuele Nicolò Straccialini. All rights reserved.</p>
+      <div class="footer__links">
+        <a href="https://github.com/sstraccialini" target="_blank" rel="noopener noreferrer" class="footer__link">GitHub</a>
+        <a href="https://www.linkedin.com/in/samuele-nicolo-straccialini/" target="_blank" rel="noopener noreferrer" class="footer__link">LinkedIn</a>
+        <a href="mailto:stra.samuele@gmail.com" class="footer__link">Email</a>
+      </div>
+    </div>
+  </footer>
+  
+  
+  
+  <!-- JavaScript -->
+  <script src="../js/projects-data.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
