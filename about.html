@@ -17,10 +17,10 @@
   <meta property="og:description" content="Learn more about Samuele Nicolò Straccialini - AI Master's student at Bocconi University with expertise in machine learning, computer vision, and NLP.">
   
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary">
   <meta property="twitter:url" content="https://sstraccialini.github.io/about.html">
-  <meta property="twitter:title" content="About - Samuele Nicolò Straccialini">
-  <meta property="twitter:description" content="Learn more about Samuele Nicolò Straccialini - AI Master's student at Bocconi University with expertise in machine learning, computer vision, and NLP.">
+  <meta name="twitter:title" content="About - Samuele Nicolò Straccialini">
+  <meta name="twitter:description" content="Learn more about Samuele Nicolò Straccialini - AI Master&#39;s student at Bocconi University with expertise in machine learning, computer vision, and NLP.">
   
   <!-- Canonical URL -->
   <link rel="canonical" href="https://sstraccialini.github.io/about.html">
@@ -33,6 +33,12 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
+  <meta property="og:image" content="https://sstraccialini.github.io/assets/images/avatar.jpg">
+  <meta property="og:image:width" content="1823">
+  <meta property="og:image:height" content="1823">
+  <meta property="og:image:alt" content="Portrait of Samuele Nicolò Straccialini">
+  <meta name="twitter:image" content="https://sstraccialini.github.io/assets/images/avatar.jpg">
+  <meta name="twitter:image:alt" content="Portrait of Samuele Nicolò Straccialini">
 </head>
 <body>
   <!-- Skip Link for Accessibility -->
@@ -45,7 +51,7 @@
       
       <nav class="nav" aria-label="Main navigation">
         <a href="index.html" class="nav__link">Home</a>
-        <a href="about.html" class="nav__link active">About</a>
+        <a href="about.html" class="nav__link active" aria-current="page">About</a>
         <a href="projects.html" class="nav__link">Projects</a>
         <a href="contact.html" class="nav__link">Contact</a>
       </nav>
@@ -82,7 +88,7 @@
   <!-- Mobile Navigation -->
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
     <a href="index.html" class="mobile-nav__link">Home</a>
-    <a href="about.html" class="mobile-nav__link active">About</a>
+    <a href="about.html" class="mobile-nav__link active" aria-current="page">About</a>
     <a href="projects.html" class="mobile-nav__link">Projects</a>
     <a href="contact.html" class="mobile-nav__link">Contact</a>
   </nav>
@@ -92,7 +98,7 @@
     <!-- Page Header -->
     <section class="page-header">
       <div class="container">
-        <h1 class="page-header__title">About Me</h1>
+        <h1 class="page-header__title">About me</h1>
         <p class="page-header__description">A deeper look into my journey, skills, and passion for artificial intelligence and software development.</p>
       </div>
     </section>
@@ -104,7 +110,7 @@
           <!-- Main Content -->
           <div>
             <div class="card">
-              <h2 style="font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-6); display: flex; align-items: center; gap: var(--space-2);">
+              <h2 style="font-size: var(--type-size-xl); font-weight: var(--type-weight-semibold); margin-bottom: var(--space-6); display: flex; align-items: flex-start; gap: var(--space-2);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
                   <circle cx="12" cy="8" r="6"></circle>
@@ -132,7 +138,7 @@
           <div style="display: flex; flex-direction: column; gap: var(--space-6);">
             <!-- Quick Facts -->
             <div class="card">
-              <h3 style="font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-4);">Quick Facts</h3>
+              <h3 style="font-size: var(--type-size-lg); font-weight: var(--type-weight-semibold); margin-bottom: var(--space-4);">Quick Facts</h3>
               <div class="quick-facts">
                 <div class="quick-fact">
                   <svg class="quick-fact__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -169,8 +175,8 @@
             
             <!-- Download CV -->
             <div class="card">
-              <h3 style="font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-3);">Download CV</h3>
-              <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-4);">Get a detailed overview of my experience, education, and accomplishments.</p>
+              <h3 style="font-size: var(--type-size-lg); font-weight: var(--type-weight-semibold); margin-bottom: var(--space-3);">Download CV</h3>
+              <p style="font-size: var(--type-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-4);">Get a detailed overview of my experience, education, and accomplishments.</p>
               <!-- TODO: Replace # with actual CV link -->
               <a href="assets/documents/cv.pdf" class="btn btn--primary" style="width: 100%;">
                 <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -184,7 +190,7 @@
             
             <!-- Languages -->
             <div class="card">
-              <h3 style="font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-4);">Languages</h3>
+              <h3 style="font-size: var(--type-size-lg); font-weight: var(--type-weight-semibold); margin-bottom: var(--space-4);">Languages</h3>
               <div class="languages-list">
                 <div class="language-item">
                   <span class="language-item__name">Italian</span>
@@ -209,7 +215,7 @@
     <section class="section section--muted" aria-labelledby="skills-title">
       <div class="container">
         <h2 id="skills-title" class="section__title" style="margin-bottom: var(--space-8);">
-          <span style="display: flex; align-items: center; justify-content: center; gap: var(--space-2);">
+          <span style="display: flex; align-items: flex-start; justify-content: flex-start; gap: var(--space-2);">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="16 18 22 12 16 6"></polyline>
               <polyline points="8 6 2 12 8 18"></polyline>
@@ -232,7 +238,7 @@
                 <span class="tag">Haskell</span>
                 <span class="tag">C#</span>
                 <span class="tag">R</span>
-                <span class="tag">MATLAB</span>
+                <span class="tag" aria-label="MATLAB">Matlab</span>
                 <span class="tag">SQL</span>
               </div>
             </div>
@@ -287,7 +293,7 @@
     <section class="section" aria-labelledby="timeline-title">
       <div class="container container--narrow">
         <h2 id="timeline-title" class="section__title" style="margin-bottom: var(--space-8);">
-          <span style="display: flex; align-items: center; justify-content: center; gap: var(--space-2);">
+          <span style="display: flex; align-items: flex-start; justify-content: flex-start; gap: var(--space-2);">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M8 2v4"></path>
               <path d="M16 2v4"></path>
@@ -338,10 +344,10 @@
     
     <!-- CTA Section -->
     <section class="section section--muted">
-      <div class="container" style="text-align: center;">
+      <div class="container" style="text-align: left;">
         <h2 class="section__title">Interested in Working Together?</h2>
         <p class="section__description" style="margin-bottom: var(--space-8);">I'm currently looking for internship opportunities in AI/ML and software development.</p>
-        <div class="flex justify-center gap-4 flex-wrap">
+        <div class="flex justify-start gap-4 flex-wrap">
           <a href="contact.html" class="btn btn--primary btn--lg">
             Get in Touch
             <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

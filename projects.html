@@ -3,53 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- Primary Meta Tags -->
   <title>Projects - Samuele Nicolò Straccialini</title>
   <meta name="title" content="Projects - Samuele Nicolò Straccialini">
   <meta name="description" content="Explore projects by Samuele Nicolò Straccialini in AI, machine learning, computer vision, and software development.">
   <meta name="author" content="Samuele Nicolò Straccialini">
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sstraccialini.github.io/projects.html">
   <meta property="og:title" content="Projects - Samuele Nicolò Straccialini">
   <meta property="og:description" content="Explore projects by Samuele Nicolò Straccialini in AI, machine learning, computer vision, and software development.">
-  
+
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary">
   <meta property="twitter:url" content="https://sstraccialini.github.io/projects.html">
-  <meta property="twitter:title" content="Projects - Samuele Nicolò Straccialini">
-  <meta property="twitter:description" content="Explore projects by Samuele Nicolò Straccialini in AI, machine learning, computer vision, and software development.">
-  
+  <meta name="twitter:title" content="Projects - Samuele Nicolò Straccialini">
+  <meta name="twitter:description" content="Explore projects by Samuele Nicolò Straccialini in AI, machine learning, computer vision, and software development.">
+
   <!-- Canonical URL -->
   <link rel="canonical" href="https://sstraccialini.github.io/projects.html">
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <meta name="theme-color" content="#2563eb">
-  
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
+  <meta property="og:image" content="https://sstraccialini.github.io/assets/images/avatar.jpg">
+  <meta property="og:image:width" content="1823">
+  <meta property="og:image:height" content="1823">
+  <meta property="og:image:alt" content="Portrait of Samuele Nicolò Straccialini">
+  <meta name="twitter:image" content="https://sstraccialini.github.io/assets/images/avatar.jpg">
+  <meta name="twitter:image:alt" content="Portrait of Samuele Nicolò Straccialini">
 </head>
 <body>
   <!-- Skip Link for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  
+
   <!-- Header -->
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="index.html" class="header__logo" aria-label="Samuele Nicolò Straccialini - Home">SNS</a>
-      
+
       <nav class="nav" aria-label="Main navigation">
         <a href="index.html" class="nav__link">Home</a>
         <a href="about.html" class="nav__link">About</a>
-        <a href="projects.html" class="nav__link active">Projects</a>
+        <a href="projects.html" class="nav__link active" aria-current="page">Projects</a>
         <a href="contact.html" class="nav__link">Contact</a>
       </nav>
-      
+
       <div class="header__actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
           <svg class="theme-toggle__icon theme-toggle__icon--light" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -67,7 +73,7 @@
             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
           </svg>
         </button>
-        
+
         <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
           <svg class="menu-toggle__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="4" x2="20" y1="12" y2="12"></line>
@@ -78,25 +84,25 @@
       </div>
     </div>
   </header>
-  
+
   <!-- Mobile Navigation -->
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
     <a href="index.html" class="mobile-nav__link">Home</a>
     <a href="about.html" class="mobile-nav__link">About</a>
-    <a href="projects.html" class="mobile-nav__link active">Projects</a>
+    <a href="projects.html" class="mobile-nav__link active" aria-current="page">Projects</a>
     <a href="contact.html" class="mobile-nav__link">Contact</a>
   </nav>
-  
+
   <!-- Main Content -->
   <main id="main-content">
     <!-- Page Header -->
     <section class="page-header">
       <div class="container">
-        <h1 class="page-header__title">All Projects</h1>
-        <p class="page-header__description">A comprehensive collection of my work in AI, machine learning, and software development. Each project demonstrates practical applications of cutting-edge technologies.</p>
+        <h1 class="page-header__title">Projects</h1>
+        <p class="page-header__description">A comprehensive collection of my work in AI, machine learning, and software development. Projects span machine learning, natural language processing, and software development.</p>
       </div>
     </section>
-    
+
     <!-- Filter Tabs -->
     <section class="section" style="padding-top: 0;">
       <div class="container">
@@ -107,19 +113,384 @@
           <button class="filter-tab" role="tab" aria-selected="false" data-filter="software">Software</button>
           <button class="filter-tab" role="tab" aria-selected="false" data-filter="other">Other</button>
         </div>
-        
+
         <div class="projects-grid" id="projects-grid">
-          <!-- Projects are dynamically loaded from projects-data.js -->
+
+        <article class="card card--interactive project-card" data-category="ai-ml">
+          <header class="project-card__header">
+            <h2 class="project-card__title">ASO-Temba</h2>
+            <span class="badge badge--success">Completed</span>
+          </header>
+          <p class="project-card__description">Extensions to MS-Temba for temporal action detection in long, untrimmed videos, exploring alternative multi-scale feature fusion modules and causal streaming inference for online detection.</p>
+          <div class="project-card__tags">
+            <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Mamba</span><span class="tag">Computer Vision</span>
+          </div>
+          <div class="project-card__actions">
+
+          <a href="https://github.com/sstraccialini/ASO-Temba" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+      </svg>
+            Code
+          </a>
+          <a href="/projects/ASO_Temba_report.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+        <path d="M10 9H8"></path>
+        <path d="M16 13H8"></path>
+        <path d="M16 17H8"></path>
+      </svg>
+            Paper
+          </a>
+          <a href="https://github.com/sstraccialini/ASO-Temba/blob/main/poster.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+            Poster
+          </a>
+          <a href="projects/aso-temba.html" class="btn btn--primary">
+            Read More
+
+          </a>
+          </div>
+        </article>
+
+        <article class="card card--interactive project-card" data-category="ai-ml data-science">
+          <header class="project-card__header">
+            <h2 class="project-card__title">How Do Italian Varieties Behave in Embedding Spaces?</h2>
+            <span class="badge badge--success">Completed</span>
+          </header>
+          <p class="project-card__description">A study of how embedding models represent six low-resource Italian dialects and eleven standard languages, comparing statistical and neural methods against known linguistic relationships.</p>
+          <div class="project-card__tags">
+            <span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Embeddings</span><span class="tag">Transformers</span>
+          </div>
+          <div class="project-card__actions">
+
+          <a href="https://github.com/sstraccialini/dialects" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+      </svg>
+            Code
+          </a>
+          <a href="/projects/How_Do_Italian_Varieties_Behave_in_Embedding_Spaces.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+        <path d="M10 9H8"></path>
+        <path d="M16 13H8"></path>
+        <path d="M16 17H8"></path>
+      </svg>
+            Paper
+          </a>
+          <a href="projects/dialects.html" class="btn btn--primary">
+            Read More
+
+          </a>
+          </div>
+        </article>
+
+        <article class="card card--interactive project-card" data-category="ai-ml software">
+          <header class="project-card__header">
+            <h2 class="project-card__title">Pydeia</h2>
+            <span class="badge badge--success">Completed</span>
+          </header>
+          <p class="project-card__description">A conversational AI prototype that helps students explore university courses in Italy through voice-guided interviews and personalized recommendations. Built for the innovAIte 2025 hackathon using a synthetic university dataset.</p>
+          <div class="project-card__tags">
+            <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">React</span><span class="tag">LLM</span>
+          </div>
+          <div class="project-card__actions">
+
+          <a href="https://github.com/sstraccialini/Pydeia" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+      </svg>
+            Code
+          </a>
+          <a href="https://github.com/sstraccialini/Pydeia/blob/main/report.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+        <path d="M10 9H8"></path>
+        <path d="M16 13H8"></path>
+        <path d="M16 17H8"></path>
+      </svg>
+            Report
+          </a>
+          <a href="projects/pydeia.html" class="btn btn--primary">
+            Read More
+
+          </a>
+          </div>
+        </article>
+
+        <article class="card card--interactive project-card" data-category="ai-ml">
+          <header class="project-card__header">
+            <h2 class="project-card__title">3D Scene Reconstruction</h2>
+            <span class="badge badge--success">Completed</span>
+          </header>
+          <p class="project-card__description">A multi-view computer vision pipeline that reconstructs 3D scenes from 2D images through camera calibration, feature matching, pose estimation, and triangulation, with interactive point cloud visualizations.</p>
+          <div class="project-card__tags">
+            <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">NumPy</span><span class="tag">Plotly</span>
+          </div>
+          <div class="project-card__actions">
+
+          <a href="https://github.com/raffaele233/3D-Scene-Reconstruction" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+      </svg>
+            Code
+          </a>
+          <a href="https://github.com/raffaele233/3D-Scene-Reconstruction/blob/main/Homework_Report.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+        <path d="M10 9H8"></path>
+        <path d="M16 13H8"></path>
+        <path d="M16 17H8"></path>
+      </svg>
+            Report
+          </a>
+          <a href="/assets/interactive-3d-reconstruction-three-view.html" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+            3D Demo
+          </a>
+          <a href="projects/3d-scene-reconstruction.html" class="btn btn--primary">
+            Read More
+
+          </a>
+          </div>
+        </article>
+
+        <article class="card card--interactive project-card" data-category="ai-ml data-science">
+          <header class="project-card__header">
+            <h2 class="project-card__title">K-Means Clustering Heuristics</h2>
+            <span class="badge badge--success">Completed</span>
+          </header>
+          <p class="project-card__description">Bachelor's thesis exploring novel heuristics for efficient and accurate k-means clustering, including a proposed extended-Hartigan algorithm and its empirical evaluation.</p>
+          <div class="project-card__tags">
+            <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">optimization</span><span class="tag">ML</span>
+          </div>
+          <div class="project-card__actions">
+
+          <a href="https://github.com/sstraccialini/k-means" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+      </svg>
+            Code
+          </a>
+          <a href="https://github.com/sstraccialini/k-means/blob/main/Tesi-final.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+        <path d="M10 9H8"></path>
+        <path d="M16 13H8"></path>
+        <path d="M16 17H8"></path>
+      </svg>
+            Thesis
+          </a>
+          <a href="projects/k-means-heuristics.html" class="btn btn--primary">
+            Read More
+
+          </a>
+          </div>
+        </article>
+
+        <article class="card card--interactive project-card" data-category="ai-ml software">
+          <header class="project-card__header">
+            <h2 class="project-card__title">RepoSummarizer</h2>
+            <span class="badge badge--success">Completed</span>
+          </header>
+          <p class="project-card__description">A local, AI-powered tool that analyzes any public GitHub repository and turns it into clear, structured documentation, including concise summaries and visual overviews.</p>
+          <div class="project-card__tags">
+            <span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Ollama</span><span class="tag">CLI</span>
+          </div>
+          <div class="project-card__actions">
+
+          <a href="https://github.com/sstraccialini/repo-summarizer" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+      </svg>
+            Code
+          </a>
+          <a href="https://sstraccialini.github.io/repo-summarizer/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+            Examples
+          </a>
+          <a href="projects/repo-summarizer.html" class="btn btn--primary">
+            Read More
+
+          </a>
+          </div>
+        </article>
+
+        <article class="card card--interactive project-card" data-category="ai-ml">
+          <header class="project-card__header">
+            <h2 class="project-card__title">SuBERT</h2>
+            <span class="badge badge--success">Completed</span>
+          </header>
+          <p class="project-card__description">End-to-end pipeline for recognizing and translating ancient Sumerian cuneiform using computer vision and Transformer-based models (BART, GPT, YOLO, Faster R-CNN).</p>
+          <div class="project-card__tags">
+            <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">HuggingFace</span><span class="tag">BART</span><span class="tag">YOLO</span>
+          </div>
+          <div class="project-card__actions">
+
+          <a href="https://github.com/sstraccialini/AI-project-SuBERT" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+      </svg>
+            Code
+          </a>
+          <a href="https://github.com/sstraccialini/AI-project-SuBERT/blob/main/SuBERT-project_report.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+        <path d="M10 9H8"></path>
+        <path d="M16 13H8"></path>
+        <path d="M16 17H8"></path>
+      </svg>
+            Report
+          </a>
+          <a href="projects/subert.html" class="btn btn--primary">
+            Read More
+
+          </a>
+          </div>
+        </article>
+
+        <article class="card card--interactive project-card" data-category="ai-ml">
+          <header class="project-card__header">
+            <h2 class="project-card__title">Automatic Quiz Scoring</h2>
+            <span class="badge badge--success">Completed</span>
+          </header>
+          <p class="project-card__description">Statistical analysis and automated answer recognition system using Machine Learning (PCA and SVM-based classifiers). Developed with Hephaestus Applied AI Association.</p>
+          <div class="project-card__tags">
+            <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">NumPy</span><span class="tag">scikit-learn</span>
+          </div>
+          <div class="project-card__actions">
+
+          <a href="https://github.com/Hephaestus-AI-Association/Automatic-Quiz-Scoring" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+      </svg>
+            Code
+          </a>
+          <a href="https://github.com/Hephaestus-AI-Association/Automatic-Quiz-Scoring/blob/main/report.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+        <path d="M10 9H8"></path>
+        <path d="M16 13H8"></path>
+        <path d="M16 17H8"></path>
+      </svg>
+            Report
+          </a>
+          <a href="projects/automatic-quiz-scoring.html" class="btn btn--primary">
+            Read More
+
+          </a>
+          </div>
+        </article>
+
+        <article class="card card--interactive project-card" data-category="data-science">
+          <header class="project-card__header">
+            <h2 class="project-card__title">Particle Escape (Brownian Motion)</h2>
+            <span class="badge badge--success">Completed</span>
+          </header>
+          <p class="project-card__description">Simulation study exploring the escape of a particle from an intracellular region using Brownian motion dynamics and statistical analysis.</p>
+          <div class="project-card__tags">
+            <span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">pandas</span><span class="tag">Simulation</span>
+          </div>
+          <div class="project-card__actions">
+
+          <a href="https://github.com/sstraccialini/Escape-of-a-Particle-Brownian-Motion" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+      </svg>
+            Code
+          </a>
+          <a href="projects/escape-particle-bm.html" class="btn btn--primary">
+            Read More
+
+          </a>
+          </div>
+        </article>
+
+        <article class="card card--interactive project-card" data-category="ai-ml software">
+          <header class="project-card__header">
+            <h2 class="project-card__title">Futoshiki Puzzle Solver</h2>
+            <span class="badge badge--success">Completed</span>
+          </header>
+          <p class="project-card__description">Puzzle solver using genetic algorithms and island models to tackle complex constraint satisfaction problems through evolutionary programming.</p>
+          <div class="project-card__tags">
+            <span class="tag">Python</span><span class="tag">Evolutionary Algorithms</span><span class="tag">Genetic Algorithms</span>
+          </div>
+          <div class="project-card__actions">
+
+          <a href="https://github.com/sstraccialini/Futoshiki-Solver-using-Evolutionary-Programming" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+      </svg>
+            Code
+          </a>
+          <a href="projects/futoshiki-puzzle-solver.html" class="btn btn--primary">
+            Read More
+
+          </a>
+          </div>
+        </article>
+
+        <article class="card card--interactive project-card" data-category="software other">
+          <header class="project-card__header">
+            <h2 class="project-card__title">BrainFuck Interpreter</h2>
+            <span class="badge badge--success">Completed</span>
+          </header>
+          <p class="project-card__description">Optimized JavaScript Brainfuck interpreter with loop unrolling, precalculated jumps, and operator compression for faster execution.</p>
+          <div class="project-card__tags">
+            <span class="tag">JavaScript</span><span class="tag">Algorithms</span><span class="tag">Interpreter</span>
+          </div>
+          <div class="project-card__actions">
+
+          <a href="https://github.com/sstraccialini/brainfuck-interpreter-js" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+      </svg>
+            Code
+          </a>
+          <a href="projects/brainfuck-interpreter.html" class="btn btn--primary">
+            Read More
+
+          </a>
+          </div>
+        </article>
         </div>
       </div>
     </section>
-    
+
     <!-- CTA Section -->
     <section class="section section--muted">
-      <div class="container" style="text-align: center;">
+      <div class="container" style="text-align: left;">
         <h2 class="section__title">Have a Project in Mind?</h2>
         <p class="section__description" style="margin-bottom: var(--space-8);">I'm always interested in new challenges and collaborations. Let's build something together.</p>
-        <div class="flex justify-center gap-4 flex-wrap">
+        <div class="flex justify-start gap-4 flex-wrap">
           <a href="contact.html" class="btn btn--primary btn--lg">
             Get in Touch
             <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -138,7 +509,7 @@
       </div>
     </section>
   </main>
-  
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer__inner">
@@ -150,7 +521,7 @@
       </div>
     </div>
   </footer>
-  
+
   <!-- JavaScript -->
   <script src="js/projects-data.js"></script>
   <script src="js/main.js"></script>

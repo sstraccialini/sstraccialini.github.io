@@ -1,0 +1,21 @@
+{
+  "scanned": "2026-10-26",
+  "findings": {
+    "framework": "static HTML and vanilla JavaScript",
+    "styles": "css/styles.css:1",
+    "profile": "index.html:99",
+    "data": "js/projects-data.js (existing edits preserved)"
+  },
+  "preserve": [
+    "information",
+    "routes",
+    "links",
+    "data",
+    "portrait"
+  ],
+  "introduce": [
+    "restrained academic typography",
+    "ruled project index",
+    "compact layout"
+  ]
+}

@@ -1,0 +1,31 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "site",
+  "shape": "Long Document",
+  "theme": "specimen",
+  "axes": "light/serif/cool",
+  "hero": "Ledge",
+  "nav": "quiet bar",
+  "footer": "compact colophon",
+  "imagery": "existing portrait",
+  "photos": [],
+  "entry": "index.html",
+  "fingerprint": "academic-profile-ruled-project-index",
+  "sections": [
+   "profile",
+   "about",
+   "projects",
+   "contact"
+  ],
+  "signature": "portrait and project index",
+  "waived": [
+   59,
+   77,
+   78
+  ],
+  "prompt": "Extremely clean simple professional academic portfolio retaining current information",
+  "date": "2026-10-26"
+ }
+]

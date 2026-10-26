@@ -5,6 +5,7 @@
 
 (function() {
   'use strict';
+  document.documentElement.classList.add('js');
 
   // ============================================
   // Theme Toggle
@@ -13,14 +14,14 @@
     STORAGE_KEY: 'theme',
     DARK: 'dark',
     LIGHT: 'light',
-    
+
     init() {
       this.toggle = document.getElementById('theme-toggle');
       if (!this.toggle) return;
-      
+
       // Set initial theme
       this.setTheme(this.getPreferredTheme());
-      
+
       // Listen for toggle clicks
       this.toggle.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -28,7 +29,7 @@
         this.setTheme(newTheme);
         this.saveTheme(newTheme);
       });
-      
+
       // Listen for system theme changes
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         if (!localStorage.getItem(this.STORAGE_KEY)) {
@@ -36,21 +37,21 @@
         }
       });
     },
-    
+
     getPreferredTheme() {
       // Check localStorage first
       const savedTheme = localStorage.getItem(this.STORAGE_KEY);
       if (savedTheme) return savedTheme;
-      
+
       // Fall back to system preference
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? this.DARK : this.LIGHT;
     },
-    
+
     setTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       this.toggle?.setAttribute('aria-label', `Switch to ${theme === this.DARK ? 'light' : 'dark'} mode`);
     },
-    
+
     saveTheme(theme) {
       localStorage.setItem(this.STORAGE_KEY, theme);
     }
@@ -63,16 +64,16 @@
     init() {
       this.toggle = document.getElementById('menu-toggle');
       this.nav = document.getElementById('mobile-nav');
-      
+
       if (!this.toggle || !this.nav) return;
-      
+
       this.toggle.addEventListener('click', () => this.toggleMenu());
-      
+
       // Close menu when clicking on a link
       this.nav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => this.closeMenu());
       });
-      
+
       // Close menu on escape key
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && this.isOpen()) {
@@ -80,7 +81,7 @@
           this.toggle.focus();
         }
       });
-      
+
       // Close menu when clicking outside
       document.addEventListener('click', (e) => {
         if (this.isOpen() && !this.nav.contains(e.target) && !this.toggle.contains(e.target)) {
@@ -88,11 +89,11 @@
         }
       });
     },
-    
+
     isOpen() {
       return this.nav.classList.contains('mobile-nav--open');
     },
-    
+
     toggleMenu() {
       if (this.isOpen()) {
         this.closeMenu();
@@ -100,14 +101,14 @@
         this.openMenu();
       }
     },
-    
+
     openMenu() {
       this.nav.classList.add('mobile-nav--open');
       this.toggle.setAttribute('aria-expanded', 'true');
       this.toggle.setAttribute('aria-label', 'Close menu');
-      document.body.style.overflow = 'hidden';
+      // Navigation is a compact disclosure; keep the page scrollable.
     },
-    
+
     closeMenu() {
       this.nav.classList.remove('mobile-nav--open');
       this.toggle.setAttribute('aria-expanded', 'false');
@@ -123,10 +124,10 @@
     init() {
       this.header = document.getElementById('header');
       if (!this.header) return;
-      
+
       let lastScrollY = window.scrollY;
       let ticking = false;
-      
+
       window.addEventListener('scroll', () => {
         if (!ticking) {
           window.requestAnimationFrame(() => {
@@ -137,11 +138,11 @@
           ticking = true;
         }
       }, { passive: true });
-      
+
       // Initial state
       this.update(window.scrollY, 0);
     },
-    
+
     update(scrollY, lastScrollY) {
       // Add shadow when scrolled
       if (scrollY > 10) {
@@ -158,12 +159,12 @@
   const CopyEmail = {
     init() {
       const buttons = document.querySelectorAll('.copy-email');
-      
+
       buttons.forEach(button => {
         button.addEventListener('click', async () => {
           const email = button.dataset.email;
           if (!email) return;
-          
+
           try {
             await navigator.clipboard.writeText(email);
             this.showFeedback(button, 'Copied!');
@@ -175,7 +176,7 @@
         });
       });
     },
-    
+
     showFeedback(button, message) {
       const originalText = button.innerHTML;
       button.innerHTML = `
@@ -185,13 +186,13 @@
         ${message}
       `;
       button.classList.add('copy-email--success');
-      
+
       setTimeout(() => {
         button.innerHTML = originalText;
         button.classList.remove('copy-email--success');
       }, 2000);
     },
-    
+
     fallbackCopy(text) {
       const textarea = document.createElement('textarea');
       textarea.value = text;
@@ -213,20 +214,20 @@
         anchor.addEventListener('click', (e) => {
           const href = anchor.getAttribute('href');
           if (href === '#') return;
-          
+
           const target = document.querySelector(href);
           if (!target) return;
-          
+
           e.preventDefault();
-          
+
           // Check for reduced motion preference
           const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          
+
           target.scrollIntoView({
             behavior: prefersReducedMotion ? 'auto' : 'smooth',
             block: 'start'
           });
-          
+
           // Update URL without scrolling
           history.pushState(null, '', href);
         });
@@ -241,13 +242,13 @@
     init() {
       // Check for reduced motion preference
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      
+
       const observerOptions = {
         root: null,
         rootMargin: '0px 0px -50px 0px',
         threshold: 0.1
       };
-      
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -256,7 +257,7 @@
           }
         });
       }, observerOptions);
-      
+
       // Observe elements with animation classes
       document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
@@ -273,7 +274,7 @@
       document.body.addEventListener('mousedown', () => {
         document.body.classList.add('using-mouse');
       });
-      
+
       document.body.addEventListener('keydown', (e) => {
         if (e.key === 'Tab') {
           document.body.classList.remove('using-mouse');
@@ -289,18 +290,18 @@
     init() {
       this.tabs = document.querySelectorAll('.filter-tab');
       this.projects = document.querySelectorAll('.project-card');
-      
+
       if (!this.tabs.length || !this.projects.length) return;
-      
+
       this.tabs.forEach(tab => {
         tab.addEventListener('click', (e) => this.handleFilter(e));
       });
     },
-    
+
     handleFilter(e) {
       const clickedTab = e.currentTarget;
       const filter = clickedTab.dataset.filter;
-      
+
       // Update active tab
       this.tabs.forEach(tab => {
         tab.classList.remove('active');
@@ -308,12 +309,12 @@
       });
       clickedTab.classList.add('active');
       clickedTab.setAttribute('aria-selected', 'true');
-      
+
       // Filter projects with smooth animation
       this.projects.forEach(project => {
         const categories = project.dataset.category || '';
         const shouldShow = filter === 'all' || categories.includes(filter);
-        
+
         if (shouldShow) {
           project.classList.remove('hidden');
         } else {
@@ -330,15 +331,15 @@
     init() {
       // Find all elements with markdown-content class
       const markdownContainers = document.querySelectorAll('.markdown-content');
-      
+
       if (markdownContainers.length === 0) return;
-      
+
       // Check if marked.js is loaded
       if (typeof marked === 'undefined') {
         console.warn('marked.js is not loaded. Markdown parsing skipped.');
         return;
       }
-      
+
       // Helper to generate slug from text
       const slugify = (text) => {
         return text
@@ -348,7 +349,7 @@
           .replace(/\s+/g, '-')       // Replace spaces with dashes
           .replace(/-+/g, '-');       // Remove consecutive dashes
       };
-      
+
       // Custom renderer for links and headings
       const renderer = {
         // Generate heading with ID for anchor links
@@ -362,11 +363,11 @@
             headingText = text;
             headingLevel = level;
           }
-          
+
           const id = slugify(headingText);
           return `<h${headingLevel} id="${id}">${headingText}</h${headingLevel}>`;
         },
-        
+
         link(href, title, text) {
           // Handle marked.js v5+ API where first arg is an object
           let url, linkTitle, linkText;
@@ -379,9 +380,9 @@
             linkTitle = title;
             linkText = text;
           }
-          
+
           const titleAttr = linkTitle ? ` title="${linkTitle}"` : '';
-          
+
           // Internal anchor links (start with #)
           if (url && url.startsWith('#')) {
             return `<a href="${url}" class="anchor-link"${titleAttr}>${linkText}</a>`;
@@ -390,39 +391,39 @@
           return `<a href="${url}" target="_blank" rel="noopener noreferrer"${titleAttr}>${linkText}</a>`;
         }
       };
-      
+
       // Configure marked with custom renderer
       marked.use({
         breaks: true,        // Convert \n to <br>
         gfm: true,           // GitHub Flavored Markdown
         renderer: renderer
       });
-      
+
       // Parse each markdown container
       markdownContainers.forEach(container => {
         let markdownText = container.textContent;
-        
+
         // Process LaTeX math before markdown parsing
         markdownText = this.processLaTeX(markdownText);
-        
+
         const htmlContent = marked.parse(markdownText);
         container.innerHTML = htmlContent;
-        
+
         // Render KaTeX if available
         this.renderKaTeX(container);
-        
+
         // Setup smooth scrolling for anchor links
         this.setupAnchorLinks(container);
       });
     },
-    
+
     // Process LaTeX: protect math expressions from markdown parsing
     processLaTeX(text) {
       // Replace block math $$...$$ with placeholder FIRST
       text = text.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) => {
         return `<div class="math-block" data-math="${this.escapeHtml(math.trim())}"></div>`;
       });
-      
+
       // Replace inline math $...$ 
       // Match $ followed by non-$ non-newline content, ending with $
       // Use word boundaries and ensure content exists
@@ -433,10 +434,10 @@
         }
         return `<span class="math-inline" data-math="${this.escapeHtml(math.trim())}"></span>`;
       });
-      
+
       return text;
     },
-    
+
     // Escape HTML for data attributes
     escapeHtml(text) {
       return text
@@ -446,7 +447,7 @@
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
     },
-    
+
     // Render KaTeX math expressions
     renderKaTeX(container) {
       if (typeof katex === 'undefined') {
@@ -457,7 +458,7 @@
         });
         return;
       }
-      
+
       // Render block math
       container.querySelectorAll('.math-block').forEach(el => {
         const math = el.getAttribute('data-math');
@@ -468,7 +469,7 @@
           console.warn('KaTeX error:', e);
         }
       });
-      
+
       // Render inline math
       container.querySelectorAll('.math-inline').forEach(el => {
         const math = el.getAttribute('data-math');
@@ -480,7 +481,7 @@
         }
       });
     },
-    
+
     // Setup anchor link click handlers for smooth scrolling
     setupAnchorLinks(container) {
       // Slugify helper (same as used for heading IDs)
@@ -492,35 +493,35 @@
           .replace(/\s+/g, '-')
           .replace(/-+/g, '-');
       };
-      
+
       container.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
-          
+
           const href = this.getAttribute('href');
           if (!href || href === '#') return;
-          
+
           // Get the raw target from href (e.g., "#overview" -> "overview")
           const rawTarget = decodeURIComponent(href.slice(1));
-          
+
           // The ID we're looking for is the slugified version
           const targetId = slugify(rawTarget);
-          
+
           // Find the element
           const targetElement = document.getElementById(targetId);
-          
+
           if (targetElement) {
             // Calculate position accounting for fixed header
             const headerOffset = 100;
             const elementPosition = targetElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
+
             window.scrollTo({
               top: offsetPosition,
               behavior: 'smooth'
             });
-            
+
             // Update URL hash
             history.replaceState(null, null, `#${targetId}`);
           } else {
@@ -569,13 +570,13 @@
     init() {
       // Check if projects data is available
       if (typeof PROJECTS_DATA === 'undefined') return;
-      
+
       // Render featured projects on homepage
       const featuredContainer = document.getElementById('featured-projects-grid');
       if (featuredContainer) {
         this.renderProjects(featuredContainer, PROJECTS_DATA.filter(p => p.featured), true);
       }
-      
+
       // Render all projects on projects page
       const allProjectsContainer = document.getElementById('projects-grid');
       if (allProjectsContainer) {
@@ -587,7 +588,7 @@
       // Determine the base path for links
       const basePath = isHomepage ? '' : '';
       const headingTag = isHomepage ? 'h3' : 'h2';
-      
+
       const html = projects.map(project => this.createProjectCard(project, basePath, headingTag)).join('');
       container.innerHTML = html;
     },
@@ -595,13 +596,13 @@
     createProjectCard(project, basePath, headingTag) {
       const statusClass = project.status === 'Completed' ? 'badge--success' : 
                          project.status === 'In Progress' ? 'badge--warning' : 'badge--info';
-      
+
       // Build tags HTML
       const tagsHtml = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
-      
+
       // Build actions HTML
       let actionsHtml = '';
-      
+
       if (project.links.code) {
         const { url, label } = this.getLinkData(project.links.code, 'Code');
         actionsHtml += `
@@ -610,7 +611,7 @@
             ${label}
           </a>`;
       }
-      
+
       if (project.links.report) {
         const { url, label } = this.getLinkData(project.links.report, 'Report');
         actionsHtml += `
@@ -619,7 +620,7 @@
             ${label}
           </a>`;
       }
-      
+
       if (project.links.link) {
         const { url, label } = this.getLinkData(project.links.link, 'Link');
         actionsHtml += `
@@ -628,12 +629,12 @@
             ${label}
           </a>`;
       }
-      
+
       if (project.links.page) {
         actionsHtml += `
           <a href="${basePath}${project.links.page}" class="btn btn--primary">
             Read More
-            ${this.icons.arrow}
+
           </a>`;
       }
 
@@ -674,7 +675,7 @@
 
       const projectId = projectHeader.dataset.projectId;
       const project = PROJECTS_DATA.find(p => p.id === projectId);
-      
+
       if (!project) {
         console.warn(`Project with id "${projectId}" not found in PROJECTS_DATA`);
         return;
@@ -723,31 +724,31 @@
     createProjectMeta(project) {
       const statusClass = project.status === 'Completed' ? 'badge--success' : 
                          project.status === 'In Progress' ? 'badge--warning' : 'badge--info';
-      
+
       let html = '';
-      
+
       if (project.date) {
         html += `
           <dt>Completion Date</dt>
           <dd>${project.date}</dd>`;
       }
-      
+
       if (project.categoryDisplay) {
         html += `
           <dt>Category</dt>
           <dd>${project.categoryDisplay}</dd>`;
       }
-      
+
       html += `
           <dt>Status</dt>
           <dd><span class="badge ${statusClass}">${project.status}</span></dd>`;
-      
+
       if (project.organization) {
         html += `
           <dt>Organization</dt>
           <dd>${project.organization}</dd>`;
       }
-      
+
       return html;
     },
 

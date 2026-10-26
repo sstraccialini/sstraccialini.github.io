@@ -23,22 +23,45 @@
 
 const PROJECTS_DATA = [
   {
-    id: '3d-scene-reconstruction',
-    title: '3D Scene Reconstruction',
-    description: 'A multi-view computer vision pipeline that reconstructs 3D scenes from 2D images through camera calibration, feature matching, pose estimation, and triangulation, with interactive point cloud visualizations.',
-    tags: ['Python', 'OpenCV', 'NumPy', 'Plotly'],
+    id: 'aso-temba',
+    title: 'ASO-Temba',
+    description: 'Extensions to MS-Temba for temporal action detection in long, untrimmed videos, exploring alternative multi-scale feature fusion modules and causal streaming inference for online detection.',
+    tags: ['Python', 'PyTorch', 'Mamba', 'Computer Vision'],
     category: 'ai-ml',
     status: 'Completed',
     featured: false,
-    categoryDisplay: 'Computer Vision, 3D Reconstruction',
-    technologies: ['Python', 'OpenCV', 'NumPy', 'Plotly', 'SIFT', 'RANSAC', 'Triangulation'],
+    categoryDisplay: 'AI/ML, Computer Vision',
+    technologies: ['Python', 'PyTorch', 'Mamba', 'CUDA', 'CLIP', 'Temporal Action Detection'],
     links: {
-      page: 'projects/3d-scene-reconstruction.html',
-      code: 'https://github.com/raffaele233/3D-Scene-Reconstruction',
-      report: 'https://github.com/raffaele233/3D-Scene-Reconstruction/blob/main/Homework_Report.pdf',
+      page: 'projects/aso-temba.html',
+      code: 'https://github.com/sstraccialini/ASO-Temba',
+      report: {
+        url: '/projects/ASO_Temba_report.pdf',
+        label: 'Paper'
+      },
       link: {
-        url: '/assets/interactive-3d-reconstruction-three-view.html',
-        label: '3D Demo'
+        url: 'https://github.com/sstraccialini/ASO-Temba/blob/main/poster.pdf',
+        label: 'Poster'
+      }
+    }
+  },
+  {
+    id: 'dialects',
+    title: 'How Do Italian Varieties Behave in Embedding Spaces?',
+    description: 'A study of how embedding models represent six low-resource Italian dialects and eleven standard languages, comparing statistical and neural methods against known linguistic relationships.',
+    tags: ['Python', 'NLP', 'Embeddings', 'Transformers'],
+    category: 'ai-ml data-science',
+    status: 'Completed',
+    featured: false,
+    categoryDisplay: 'AI/ML, NLP, Data Science',
+    organization: 'Bocconi University',
+    technologies: ['Python', 'TF-IDF', 'FastText', 'Word2Vec', 'XLM-R', 'CANINE', 'LaBSE'],
+    links: {
+      page: 'projects/dialects.html',
+      code: 'https://github.com/sstraccialini/dialects',
+      report: {
+        url: '/projects/How_Do_Italian_Varieties_Behave_in_Embedding_Spaces.pdf',
+        label: 'Paper'
       }
     }
   },
@@ -59,37 +82,22 @@ const PROJECTS_DATA = [
     }
   },
   {
-    id: 'dialects',
-    title: 'How Do Italian Varieties Behave in Embedding Spaces?',
-    description: 'A study of how embedding models represent six low-resource Italian dialects and eleven standard languages, comparing statistical and neural methods against known linguistic relationships.',
-    tags: ['Python', 'NLP', 'Embeddings', 'Transformers'],
-    category: 'ai-ml data-science',
-    status: 'Completed',
-    featured: false,
-    categoryDisplay: 'AI/ML, NLP, Data Science',
-    organization: 'Bocconi University',
-    technologies: ['Python', 'TF-IDF', 'FastText', 'Word2Vec', 'XLM-R', 'CANINE', 'LaBSE'],
-    links: {
-      page: 'projects/dialects.html',
-      code: 'https://github.com/sstraccialini/dialects'
-    }
-  },
-  {
-    id: 'aso-temba',
-    title: 'ASO-Temba',
-    description: 'Extensions to MS-Temba for temporal action detection in long, untrimmed videos, exploring alternative multi-scale feature fusion modules and causal streaming inference for online detection.',
-    tags: ['Python', 'PyTorch', 'Mamba', 'Computer Vision'],
+    id: '3d-scene-reconstruction',
+    title: '3D Scene Reconstruction',
+    description: 'A multi-view computer vision pipeline that reconstructs 3D scenes from 2D images through camera calibration, feature matching, pose estimation, and triangulation, with interactive point cloud visualizations.',
+    tags: ['Python', 'OpenCV', 'NumPy', 'Plotly'],
     category: 'ai-ml',
     status: 'Completed',
     featured: false,
-    categoryDisplay: 'AI/ML, Computer Vision',
-    technologies: ['Python', 'PyTorch', 'Mamba', 'CUDA', 'CLIP', 'Temporal Action Detection'],
+    categoryDisplay: 'Computer Vision, 3D Reconstruction',
+    technologies: ['Python', 'OpenCV', 'NumPy', 'Plotly', 'SIFT', 'RANSAC', 'Triangulation'],
     links: {
-      page: 'projects/aso-temba.html',
-      code: 'https://github.com/sstraccialini/ASO-Temba',
-      report: {
-        url: 'https://github.com/sstraccialini/ASO-Temba/blob/main/poster.pdf',
-        label: 'Poster'
+      page: 'projects/3d-scene-reconstruction.html',
+      code: 'https://github.com/raffaele233/3D-Scene-Reconstruction',
+      report: 'https://github.com/raffaele233/3D-Scene-Reconstruction/blob/main/Homework_Report.pdf',
+      link: {
+        url: '/assets/interactive-3d-reconstruction-three-view.html',
+        label: '3D Demo'
       }
     }
   },
