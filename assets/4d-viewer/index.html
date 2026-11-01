@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>4D Point Cloud Viewer</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>4D Point Cloud Viewer</h1>
+      <a href="../">Back to site</a>
+    </header>
+
+    <main>
+      <section class="viewer" aria-label="Point cloud visualization">
+        <div class="viewer-header">
+          <span id="dataBadge">Loading data</span>
+          <span id="frameMeta">—</span>
+        </div>
+        <div id="viewport" aria-label="3D viewer. Drag to orbit, Shift-drag to roll, Control or Command-drag to pan, and scroll to zoom.">
+          <div id="loading" class="loading">
+            <strong id="loadingTitle">Loading point clouds...</strong>
+            <span id="loadingDetail">Reading manifest</span>
+          </div>
+        </div>
+        <p class="viewer-help">Drag: orbit &nbsp;·&nbsp; Shift + drag: roll &nbsp;·&nbsp; Ctrl/Cmd + drag: pan &nbsp;·&nbsp; Scroll: zoom &nbsp;·&nbsp; F: flip 180°</p>
+        <div class="timeline-panel">
+          <div class="timeline-head">
+            <label for="timeline">Timeline</label>
+            <output id="timestamp">Frame — / —</output>
+          </div>
+          <input type="range" id="timeline" min="0" max="0" value="0" step="1" aria-label="Timeline frame" disabled>
+          <div class="transport-bar">
+            <div class="transport">
+              <button id="prev" type="button" aria-label="Previous frame" disabled>Previous</button>
+              <button id="play" type="button" aria-label="Play animation" disabled>Play</button>
+              <button id="next" type="button" aria-label="Next frame" disabled>Next</button>
+            </div>
+            <div class="playback-options">
+              <label for="fps">Speed</label>
+              <select id="fps">
+                <option value="1">1 fps</option>
+                <option value="3">3 fps</option>
+                <option value="5" selected>5 fps</option>
+                <option value="10">10 fps</option>
+                <option value="15">15 fps</option>
+              </select>
+              <label class="check"><input type="checkbox" id="loop" checked> Loop</label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Viewer settings">
+        <div class="control-group">
+          <h2>Color</h2>
+          <div id="colorControls" class="button-group" role="group" aria-label="Point coloring">
+            <button type="button" data-color="rgb" class="active" aria-pressed="true">RGB</button>
+            <button type="button" data-color="instance" aria-pressed="false">Instances</button>
+          </div>
+          <p class="muted" id="colorDesc">Original camera colors</p>
+        </div>
+
+        <div class="control-group">
+          <h2>Time mode</h2>
+          <div id="modeControls" class="button-group" role="group" aria-label="Temporal mode">
+            <button type="button" data-mode="frame" class="active" aria-pressed="true">Frame</button>
+            <button type="button" data-mode="accumulate" aria-pressed="false">Accumulate</button>
+            <button type="button" data-mode="window" aria-pressed="false">Window</button>
+          </div>
+          <div id="windowRow" class="field" hidden>
+            <label for="windowSize">Window size</label>
+            <input type="range" id="windowSize" min="2" max="15" value="5">
+            <output id="windowValue">5</output>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h2>Display</h2>
+          <div class="field">
+            <label for="pointSize">Point size</label>
+            <input type="range" id="pointSize" min="1" max="9" value="3">
+            <output id="pointSizeValue">3</output>
+          </div>
+          <label class="check"><input type="checkbox" id="backgroundToggle" checked> Show background points</label>
+          <button id="resetCamera" type="button">Reset camera</button>
+        </div>
+      </section>
+
+      <div class="details" aria-label="Dataset and current view statistics">
+        <span>Frames: <strong id="frameCount">—</strong></span>
+        <span>Total points: <strong id="pointTotal">—</strong></span>
+        <span>Visible points: <strong id="visiblePoints">—</strong></span>
+        <span>Visible frames: <strong id="visibleFrames">—</strong></span>
+        <span>Source frame: <strong id="sourceFrame">—</strong></span>
+      </div>
+      <p class="footnote">Accumulation overlays points; it does not fuse geometry.</p>
+      <p id="footerNote" class="footnote"></p>
+    </main>
+  </div>
+  <script type="module" src="./viewer.js"></script>
+</body>
+</html>
