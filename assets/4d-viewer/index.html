@@ -38,8 +38,9 @@
             <strong id="loadingTitle">Loading point clouds...</strong>
             <span id="loadingDetail">Reading datasets.json</span>
           </div>
+          <div id="inset" class="inset" hidden><span>Camera view</span></div>
         </div>
-        <p class="viewer-help">Drag: orbit &nbsp;·&nbsp; Shift + drag: roll &nbsp;·&nbsp; Ctrl/Cmd + drag: pan &nbsp;·&nbsp; Scroll: zoom &nbsp;·&nbsp; F: flip 180°</p>
+        <p class="viewer-help">Drag: orbit &nbsp;·&nbsp; Shift + drag: roll &nbsp;·&nbsp; Ctrl/Cmd + drag: pan &nbsp;·&nbsp; Scroll: zoom &nbsp;·&nbsp; F: flip 180° &nbsp;·&nbsp; C: look through camera</p>
         <div class="timeline-panel">
           <div class="timeline-head">
             <label for="timeline">Timeline</label>
@@ -105,6 +106,16 @@
           </div>
           <label class="check"><input type="checkbox" id="backgroundToggle" checked> Show background points</label>
           <button id="resetCamera" type="button">Reset camera</button>
+        </div>
+
+        <div class="control-group">
+          <h2>Camera</h2>
+          <div class="stack">
+            <label class="check"><input type="checkbox" id="cameraToggle" checked disabled> Show camera and path</label>
+            <label class="check"><input type="checkbox" id="insetToggle" checked disabled> Camera view inset</label>
+            <button id="followCamera" type="button" aria-pressed="false" disabled>Look through camera</button>
+          </div>
+          <p class="muted" id="cameraDesc">No camera poses in this reconstruction</p>
         </div>
       </section>
 

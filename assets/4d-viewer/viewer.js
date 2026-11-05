@@ -13,7 +13,7 @@ const ui = Object.fromEntries([
   'colorControls','colorDesc','modeControls','windowRow','windowSize','windowValue',
   'pointSize','pointSizeValue','backgroundToggle','resetCamera','visiblePoints',
   'visibleFrames','sourceFrame','footerNote','datasetControls','datasetDesc','modeDesc',
-  'fadeToggle','accumulateDesc',
+  'fadeToggle','accumulateDesc','cameraToggle','insetToggle','followCamera','cameraDesc','inset',
 ].map(id => [id, $(id)]));
 
 let catalog = null, dataset = null, manifest = null; // datasets.json, active entry, its manifest
@@ -24,6 +24,15 @@ let playing = false, playTimer = null;
 let displayed = []; // {index, points, count}
 const frameCache = new Map(); // LRU for decoded binary frames, keyed by dataset id and frame
 let colorMode = 'rgb', viewMode = 'frame', requestedMode = 'frame';
+
+// Camera poses (optional): frames[i].camera = {camera_to_world: row-major 4x4, fx, fy, cx, cy},
+// manifest.camera = {convention: 'opencv', width, height}. OpenCV cameras look along +z with
+// y down; three.js cameras look along -z with y up, hence FLIP when rendering from the pose.
+const FLIP = new THREE.Matrix4().makeScale(1, -1, -1);
+const CAMERA_COLOR = 0x2ee6ff, PATH_COLOR = 0xffb000;
+let cameraLayer, cameraRig, frustumLines, trajectoryAll, trajectoryPast, insetCamera;
+let trajectoryCount = []; // trajectoryCount[i]: posed frames up to and including frame i
+let pose = null, following = false, savedFov = 50;
 
 function fmt(n) { return Number(n || 0).toLocaleString('en-US'); }
 function setLoading(title, detail = '', failed = false) {
@@ -190,6 +199,7 @@ function updateStats(index) {
   ui.accumulateDesc.hidden = stride === 1;
   ui.accumulateDesc.textContent = `Long history: showing 1 in every ${stride} frames to stay under ${fmt(MAX_VISIBLE_POINTS)} points`;
   ui.timeline.value = index;
+  updateCameraLayer(index);
 }
 
 async function showFrame(index, {force = false} = {}) {
@@ -274,7 +284,136 @@ function updateMode(next, {render = true} = {}) {
   }
   if (render) showFrame(Math.max(0, currentFrame), {force: true}).catch(fail);
 }
+// Camera pose in viewer space: the same normalization as the points, but kept rigid
+// (only the translation is rescaled) so it can drive a three.js camera directly.
+function cameraPose(index) {
+  const cam = manifest?.camera && manifest.frames[index]?.camera;
+  if (!cam || cam.camera_to_world?.length !== 16) return null;
+  const matrix = new THREE.Matrix4().fromArray(cam.camera_to_world).transpose();
+  const e = matrix.elements;
+  for (let k = 0; k < 3; k++) e[12 + k] = (e[12 + k] - cloudCenter[k]) * cloudScale;
+  const {width, height} = manifest.camera;
+  return {matrix, cam, width, height, fov: THREE.MathUtils.radToDeg(2 * Math.atan(height / (2 * cam.fy)))};
+}
+
+// Frustum in OpenCV camera coordinates: rays to the image corners at depth d, the image
+// rectangle, and a tick above the top edge (smaller v) that shows the camera's roll.
+function frustumPositions({cam, width: W, height: H}, d) {
+  const p = (u, v) => [(u - cam.cx) / cam.fx * d, (v - cam.cy) / cam.fy * d, d];
+  const o = [0, 0, 0], a = p(0, 0), b = p(W, 0), c = p(W, H), e = p(0, H);
+  const t0 = p(W * 0.35, 0), t1 = p(W / 2, -H * 0.18), t2 = p(W * 0.65, 0);
+  return [o, a, o, b, o, c, o, e, a, b, b, c, c, e, e, a, t0, t1, t1, t2].flat();
+}
+
+function setupCameraLayer() {
+  const overlay = props => ({color: CAMERA_COLOR, depthTest: false, transparent: true, ...props});
+  cameraLayer = new THREE.Group();
+  cameraRig = new THREE.Group();
+  cameraRig.matrixAutoUpdate = false;
+  frustumLines = new THREE.LineSegments(new THREE.BufferGeometry(), new THREE.LineBasicMaterial(overlay()));
+  frustumLines.geometry.setAttribute('position', new THREE.Float32BufferAttribute(new Float32Array(60), 3));
+  const marker = new THREE.Mesh(new THREE.SphereGeometry(0.015, 16, 12), new THREE.MeshBasicMaterial(overlay()));
+  cameraRig.add(frustumLines, marker);
+  trajectoryAll = new THREE.Line(new THREE.BufferGeometry(), new THREE.LineBasicMaterial(overlay({color: PATH_COLOR, opacity: 0.25})));
+  trajectoryPast = new THREE.Line(new THREE.BufferGeometry(), new THREE.LineBasicMaterial(overlay({color: PATH_COLOR, opacity: 0.7})));
+  for (const object of [trajectoryAll, trajectoryPast, frustumLines, marker]) {
+    object.renderOrder = 1e9; // draw over the points
+    object.frustumCulled = false;
+  }
+  cameraLayer.add(trajectoryAll, trajectoryPast, cameraRig);
+  scene.add(cameraLayer);
+  insetCamera = new THREE.PerspectiveCamera(50, 1, 0.04, 200);
+  insetCamera.matrixAutoUpdate = false;
+}
+
+function buildTrajectory() {
+  const positions = [];
+  trajectoryCount = manifest.frames.map((_, i) => {
+    const p = cameraPose(i);
+    if (p) positions.push(...new THREE.Vector3().setFromMatrixPosition(p.matrix).toArray());
+    return positions.length / 3;
+  });
+  for (const line of [trajectoryAll, trajectoryPast]) {
+    line.geometry.dispose();
+    line.geometry = new THREE.BufferGeometry();
+    line.geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  }
+  const posed = positions.length / 3;
+  const total = manifest.frames.length;
+  ui.cameraDesc.textContent = !posed ? 'No camera poses in this reconstruction'
+    : posed === total ? 'Estimated pose for every frame'
+    : `Estimated pose for ${fmt(posed)} of ${fmt(total)} frames`;
+  for (const input of [ui.cameraToggle, ui.insetToggle, ui.followCamera]) input.disabled = !posed;
+  if (!posed) setFollowing(false);
+}
+
+function updateCameraLayer(index) {
+  pose = cameraPose(index);
+  if (pose) {
+    const position = frustumLines.geometry.attributes.position;
+    position.array.set(frustumPositions(pose, 0.15)); // 0.15 viewer units ≈ 4% of the scene diagonal
+    position.needsUpdate = true;
+    cameraRig.matrix.copy(pose.matrix);
+    cameraRig.matrixWorldNeedsUpdate = true;
+    trajectoryPast.geometry.setDrawRange(0, trajectoryCount[index]);
+    insetCamera.fov = pose.fov;
+    insetCamera.aspect = pose.width / pose.height;
+    insetCamera.updateProjectionMatrix();
+    insetCamera.matrix.copy(pose.matrix).multiply(FLIP);
+    insetCamera.matrixWorldNeedsUpdate = true;
+  }
+  cameraLayer.visible = Boolean(pose) && ui.cameraToggle.checked && !following;
+  layoutInset();
+}
+
+function insetRect() {
+  const w = ui.viewport.clientWidth, h = ui.viewport.clientHeight;
+  const aspect = pose ? pose.width / pose.height : 1;
+  const width = Math.round(Math.min(w * 0.3, h * 0.42 * aspect, 300));
+  const height = Math.round(width / aspect);
+  return {x: w - width - 12, y: 12, width, height}; // y from the bottom, as WebGL expects
+}
+function insetVisible() { return Boolean(pose) && ui.insetToggle.checked && !following; }
+function layoutInset() {
+  ui.inset.hidden = !insetVisible();
+  if (ui.inset.hidden) return;
+  const r = insetRect();
+  Object.assign(ui.inset.style, {width: `${r.width}px`, height: `${r.height}px`});
+}
+
+// Look through the estimated camera: the main view follows the pose frame by frame.
+function setFollowing(next) {
+  if (next && !pose) return;
+  if (next === following) return;
+  following = next;
+  controls.enabled = !following;
+  ui.followCamera.textContent = following ? 'Free view' : 'Look through camera';
+  ui.followCamera.setAttribute('aria-pressed', String(following));
+  ui.followCamera.classList.toggle('active', following);
+  if (following) {
+    savedFov = camera.fov;
+  } else {
+    // Hand the current viewpoint back to the orbit controls.
+    camera.fov = savedFov;
+    camera.updateProjectionMatrix();
+    camera.up.set(0, 1, 0).applyQuaternion(camera.quaternion);
+    const forward = new THREE.Vector3(0, 0, -1).applyQuaternion(camera.quaternion);
+    controls.target.copy(camera.position).addScaledVector(forward, 1.5);
+    controls.update();
+  }
+  if (currentFrame >= 0) updateCameraLayer(currentFrame);
+}
+function applyFollow() {
+  if (!following || !pose) return;
+  new THREE.Matrix4().copy(pose.matrix).multiply(FLIP).decompose(camera.position, camera.quaternion, camera.scale);
+  if (camera.fov !== pose.fov) {
+    camera.fov = pose.fov;
+    camera.updateProjectionMatrix();
+  }
+}
+
 function resetView() {
+  setFollowing(false);
   camera.position.set(3.5, 2.7, 5.7);
   controls.target.set(0, 0, 0);
   camera.up.set(0, 1, 0);
@@ -350,6 +489,7 @@ function setupScene() {
   material = new THREE.PointsMaterial({size: 0.026, vertexColors: true, sizeAttenuation: true, transparent: false});
   cloudGroup = new THREE.Group();
   scene.add(cloudGroup);
+  setupCameraLayer();
   resetView();
   const observer = new ResizeObserver(() => {
     const w = ui.viewport.clientWidth, h = ui.viewport.clientHeight;
@@ -357,15 +497,35 @@ function setupScene() {
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
+    layoutInset();
   });
   observer.observe(ui.viewport);
   function tick() {
     requestAnimationFrame(tick);
-    controls.update();
+    if (following) applyFollow(); else controls.update();
     renderer.render(scene, camera);
+    if (insetVisible()) renderInset();
   }
   tick();
 }
+// Second pass into the corner: the scene as seen from the estimated camera.
+function renderInset() {
+  const r = insetRect(), h = ui.viewport.clientHeight;
+  // Point sizes scale with the canvas height, not the viewport; shrink them to match.
+  const shrink = r.height / Math.max(h, 1);
+  for (const {points} of displayed) points.material.size *= shrink;
+  const layerVisible = cameraLayer.visible;
+  cameraLayer.visible = false;
+  renderer.setScissorTest(true);
+  renderer.setViewport(r.x, r.y, r.width, r.height);
+  renderer.setScissor(r.x, r.y, r.width, r.height);
+  renderer.render(scene, insetCamera);
+  renderer.setScissorTest(false);
+  renderer.setViewport(0, 0, ui.viewport.clientWidth, h);
+  cameraLayer.visible = layerVisible;
+  for (const {points} of displayed) points.material.size /= shrink;
+}
+
 function wireControls() {
   ui.play.addEventListener('click', () => setPlaying(!playing));
   ui.prev.addEventListener('click', () => {setPlaying(false); showFrame(currentFrame - 1).catch(fail);});
@@ -390,6 +550,9 @@ function wireControls() {
   });
   ui.backgroundToggle.addEventListener('change', () => showFrame(Math.max(0, currentFrame), {force: true}).catch(fail));
   ui.resetCamera.addEventListener('click', resetView);
+  ui.cameraToggle.addEventListener('change', () => updateCameraLayer(currentFrame));
+  ui.insetToggle.addEventListener('change', layoutInset);
+  ui.followCamera.addEventListener('click', () => setFollowing(!following));
   window.addEventListener('keydown', e => {
     if (['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName)) return;
     if (e.code === 'Space') {e.preventDefault(); setPlaying(!playing);}
@@ -398,6 +561,8 @@ function wireControls() {
     if (e.key?.toLowerCase() === 'f' && !e.ctrlKey && !e.metaKey && !e.altKey) rollView(Math.PI);
     if (e.key?.toLowerCase() === 'r') updateColor('rgb');
     if (e.key?.toLowerCase() === 'i') updateColor('instance');
+    if (e.key?.toLowerCase() === 'c' && !e.ctrlKey && !e.metaKey) setFollowing(!following);
+    if (e.key === 'Escape') setFollowing(false);
   });
 }
 
@@ -432,6 +597,9 @@ async function loadDataset(id) {
   generation++; // cancels any frame load still in flight for the previous dataset
   manifest = null;
   dataset = entry;
+  pose = null;
+  cameraLayer.visible = false;
+  layoutInset();
   for (const button of ui.datasetControls.querySelectorAll('button')) {
     const active = button.dataset.id === entry.id;
     button.classList.toggle('active', active);
@@ -468,6 +636,7 @@ async function loadDataset(id) {
     ui.colorDesc.textContent = 'RGB unavailable: using instance colors';
   }
   updateMode(requestedMode, {render: false});
+  buildTrajectory();
   // Keep the current frame (and camera) so reconstructions can be compared directly.
   await showFrame(Math.max(0, currentFrame), {force: true});
 }

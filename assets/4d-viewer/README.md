@@ -35,3 +35,18 @@ Fields:
 - `description`: optional, a short line shown under the switcher.
 
 `default` at the top of `datasets.json` picks the reconstruction that opens first.
+
+## Camera poses
+
+When `convert_npz_to_web.py` finds `omega/predictions.npz` next to `pointclouds_4d/`, it
+writes each frame's estimated camera into the manifest:
+
+- `frames[i].camera = {camera_to_world, fx, fy, cx, cy}`: a row-major 4×4 OpenCV pose
+  (x right, y down, z forward) in the same world frame as the points, plus intrinsics.
+- `camera = {convention: "opencv", width, height}` at the top level: the image size the
+  intrinsics refer to.
+
+The viewer then draws the camera (marker, frustum with a tick on the top edge, trajectory),
+a "Camera view" inset rendered from that pose, and a "Look through camera" mode (key C). Frames
+or manifests without a `camera` entry simply hide these.
+

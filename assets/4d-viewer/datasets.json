@@ -11,6 +11,15 @@
       "description": "S4VY + VGGT-Ω export"
     },
     {
+      "id": "ADT_video_100_512",
+      "path": "ADT_video_100_512",
+      "label": "ADT Apartment_release_clean_seq131_M1292 100f 512px",
+      "representation": "raw",
+      "frames": 100,
+      "resolution": 512,
+      "description": "S4VY + VGGT-Ω export"
+    },
+    {
       "id": "ADT_video_cut_80_512",
       "path": "ADT_video_cut_80_512",
       "label": "ADT 10s 80f 512px",
