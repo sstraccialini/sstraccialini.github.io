@@ -22,6 +22,12 @@
     </header>
 
     <main>
+      <section class="datasets" aria-label="Reconstruction">
+        <h2>Reconstruction</h2>
+        <div id="datasetControls" class="button-group" role="group" aria-label="Reconstruction"></div>
+        <p class="muted" id="datasetDesc">—</p>
+      </section>
+
       <section class="viewer" aria-label="Point cloud visualization">
         <div class="viewer-header">
           <span id="dataBadge">Loading data</span>
@@ -30,7 +36,7 @@
         <div id="viewport" aria-label="3D viewer. Drag to orbit, Shift-drag to roll, Control or Command-drag to pan, and scroll to zoom.">
           <div id="loading" class="loading">
             <strong id="loadingTitle">Loading point clouds...</strong>
-            <span id="loadingDetail">Reading manifest</span>
+            <span id="loadingDetail">Reading datasets.json</span>
           </div>
         </div>
         <p class="viewer-help">Drag: orbit &nbsp;·&nbsp; Shift + drag: roll &nbsp;·&nbsp; Ctrl/Cmd + drag: pan &nbsp;·&nbsp; Scroll: zoom &nbsp;·&nbsp; F: flip 180°</p>
@@ -78,11 +84,16 @@
             <button type="button" data-mode="accumulate" aria-pressed="false">Accumulate</button>
             <button type="button" data-mode="window" aria-pressed="false">Window</button>
           </div>
-          <div id="windowRow" class="field" hidden>
-            <label for="windowSize">Window size</label>
-            <input type="range" id="windowSize" min="2" max="15" value="5">
-            <output id="windowValue">5</output>
+          <p class="muted" id="modeDesc" hidden>Fused snapshots already include past frames</p>
+          <div id="windowRow" hidden>
+            <div class="field">
+              <label for="windowSize">Window size</label>
+              <input type="range" id="windowSize" min="2" max="30" value="8">
+              <output id="windowValue">8</output>
+            </div>
+            <label class="check"><input type="checkbox" id="fadeToggle" checked> Fade older frames</label>
           </div>
+          <p class="muted" id="accumulateDesc" hidden></p>
         </div>
 
         <div class="control-group">

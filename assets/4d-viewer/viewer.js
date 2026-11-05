@@ -12,17 +12,18 @@ const ui = Object.fromEntries([
   'dataBadge','frameMeta','timestamp','timeline','prev','next','play','fps','loop',
   'colorControls','colorDesc','modeControls','windowRow','windowSize','windowValue',
   'pointSize','pointSizeValue','backgroundToggle','resetCamera','visiblePoints',
-  'visibleFrames','sourceFrame','footerNote',
+  'visibleFrames','sourceFrame','footerNote','datasetControls','datasetDesc','modeDesc',
+  'fadeToggle','accumulateDesc',
 ].map(id => [id, $(id)]));
 
-let manifest = null;
+let catalog = null, dataset = null, manifest = null; // datasets.json, active entry, its manifest
 let renderer, scene, camera, controls, material, cloudGroup;
 let cloudCenter = [0, 0, 0], cloudScale = 1;
 let currentFrame = -1, displayedMode = null, generation = 0;
 let playing = false, playTimer = null;
 let displayed = []; // {index, points, count}
-const frameCache = new Map(); // LRU for decoded binary frames
-let colorMode = 'rgb', viewMode = 'frame';
+const frameCache = new Map(); // LRU for decoded binary frames, keyed by dataset id and frame
+let colorMode = 'rgb', viewMode = 'frame', requestedMode = 'frame';
 
 function fmt(n) { return Number(n || 0).toLocaleString('en-US'); }
 function setLoading(title, detail = '', failed = false) {
@@ -35,20 +36,25 @@ function hideLoading() { ui.loading.hidden = true; }
 function fail(error) {
   console.error(error);
   setLoading('Unable to load point clouds',
-    `${error.message}\nCheck data/manifest.json and the browser console. Run this page through a local HTTP server, not file://.`, true);
+    `${error.message}\nCheck datasets.json, the dataset manifest and the browser console. Run this page through a local HTTP server, not file://.`, true);
   ui.dataBadge.textContent = 'Data error';
   ui.dataBadge.classList.add('error');
 }
 
+// Relative paths work on custom domains and GitHub project subpaths.
+function dataUrl(entry, file) { return new URL(`./${entry.path}/${file}`, import.meta.url); }
+
 async function getFrame(index) {
-  if (frameCache.has(index)) {
-    const existing = frameCache.get(index);
-    frameCache.delete(index); frameCache.set(index, existing);
+  const key = `${dataset.id}:${index}`;
+  if (frameCache.has(key)) {
+    const existing = frameCache.get(key);
+    frameCache.delete(key); frameCache.set(key, existing);
     return existing;
   }
+  // Snapshot the normalization: a dataset switch may happen while fetching.
+  const center = cloudCenter, scale = cloudScale;
   const file = manifest.frames[index].file;
-  // Relative path works on custom domains and GitHub project subpaths.
-  const url = new URL(`./data/${file}`, import.meta.url);
+  const url = dataUrl(dataset, file);
   const response = await fetch(url);
   if (!response.ok) throw new Error(`Cannot fetch ${file} (HTTP ${response.status})`);
   const buffer = await response.arrayBuffer();
@@ -67,9 +73,9 @@ async function getFrame(index) {
   let o = 8;
   for (let i = 0; i < count; i++) {
     const j = i * 3;
-    xyz[j] = (data.getFloat32(o, true) - cloudCenter[0]) * cloudScale;
-    xyz[j + 1] = (data.getFloat32(o + 4, true) - cloudCenter[1]) * cloudScale;
-    xyz[j + 2] = (data.getFloat32(o + 8, true) - cloudCenter[2]) * cloudScale;
+    xyz[j] = (data.getFloat32(o, true) - center[0]) * scale;
+    xyz[j + 1] = (data.getFloat32(o + 4, true) - center[1]) * scale;
+    xyz[j + 2] = (data.getFloat32(o + 8, true) - center[2]) * scale;
     rgb[j] = data.getUint8(o + 12);
     rgb[j + 1] = data.getUint8(o + 13);
     rgb[j + 2] = data.getUint8(o + 14);
@@ -80,7 +86,7 @@ async function getFrame(index) {
     o += STRIDE;
   }
   const decoded = { xyz, rgb, instanceRgb, ids, count };
-  frameCache.set(index, decoded);
+  frameCache.set(key, decoded);
   while (frameCache.size > MAX_CACHE_FRAMES) frameCache.delete(frameCache.keys().next().value);
   return decoded;
 }
@@ -109,29 +115,66 @@ function createPoints(frame, index) {
   geometry.userData.rgb = new THREE.Uint8BufferAttribute(rgb, 3, true);
   geometry.userData.instance = new THREE.Uint8BufferAttribute(instances, 3, true);
   geometry.setAttribute('color', colorMode === 'rgb' ? geometry.userData.rgb : geometry.userData.instance);
-  const points = new THREE.Points(geometry, material);
+  // Each cloud gets its own material so window mode can fade it independently.
+  const points = new THREE.Points(geometry, material.clone());
   points.frustumCulled = false;
+  points.renderOrder = index; // older frames blend first
   cloudGroup.add(points);
   displayed.push({index, points, count});
 }
 
+function disposeCloud({points}) {
+  cloudGroup.remove(points);
+  points.geometry.dispose();
+  points.material.dispose();
+}
 function removeFirst() {
   const first = displayed.shift();
-  if (!first) return;
-  cloudGroup.remove(first.points);
-  first.points.geometry.dispose();
+  if (first) disposeCloud(first);
 }
 function clearClouds() {
   while (displayed.length) removeFirst();
 }
-function trimVisible() {
-  let sum = displayed.reduce((acc, frame) => acc + frame.count, 0);
+// Accumulate overlays the whole history but caps the point budget: once frames 0..index
+// exceed MAX_VISIBLE_POINTS, only every `stride`-th frame (plus the current one) is kept,
+// so the overlay still spans the entire video instead of only its most recent part.
+function accumulateStride(index) {
+  let sum = 0;
+  for (let k = 0; k <= index; k++) sum += manifest.frames[k].count;
+  return Math.max(1, Math.ceil(sum / MAX_VISIBLE_POINTS));
+}
+function accumulateFrames(index) {
+  const stride = accumulateStride(index);
+  const frames = [];
+  for (let k = 0; k < index; k += stride) frames.push(k);
+  frames.push(index);
+  return frames;
+}
+function trimVisible(index) {
   if (viewMode === 'frame') {
-    while (displayed.length > 1) {sum -= displayed[0].count; removeFirst();}
+    while (displayed.length > 1) removeFirst();
   } else if (viewMode === 'window') {
-    while (displayed.length > Number(ui.windowSize.value)) {sum -= displayed[0].count; removeFirst();}
+    while (displayed.length > Number(ui.windowSize.value)) removeFirst();
   } else {
-    while (sum > MAX_VISIBLE_POINTS && displayed.length > 1) {sum -= displayed[0].count; removeFirst();}
+    const stride = accumulateStride(index);
+    displayed = displayed.filter(entry => {
+      const keep = entry.index === index || entry.index % stride === 0;
+      if (!keep) disposeCloud(entry);
+      return keep;
+    });
+  }
+}
+// In window mode, older frames fade out linearly so motion leaves a trail.
+function applyFade(index) {
+  const fade = viewMode === 'window' && ui.fadeToggle.checked;
+  const size = Number(ui.windowSize.value);
+  for (const {index: k, points} of displayed) {
+    const opacity = fade ? 1 - (index - k) / size : 1;
+    const transparent = opacity < 1;
+    if (points.material.transparent !== transparent) points.material.needsUpdate = true;
+    points.material.transparent = transparent;
+    points.material.depthWrite = !transparent;
+    points.material.opacity = opacity;
   }
 }
 function updateStats(index) {
@@ -143,6 +186,9 @@ function updateStats(index) {
   ui.sourceFrame.textContent = info.source_frame_index ?? info.frame_index ?? index;
   ui.visiblePoints.textContent = fmt(displayed.reduce((n, x) => n + x.count, 0));
   ui.visibleFrames.textContent = displayed.length;
+  const stride = viewMode === 'accumulate' ? accumulateStride(index) : 1;
+  ui.accumulateDesc.hidden = stride === 1;
+  ui.accumulateDesc.textContent = `Long history: showing 1 in every ${stride} frames to stay under ${fmt(MAX_VISIBLE_POINTS)} points`;
   ui.timeline.value = index;
 }
 
@@ -153,30 +199,25 @@ async function showFrame(index, {force = false} = {}) {
   const sequential = !force && index === currentFrame + 1 && displayedMode === viewMode;
   if (!sequential) {
     clearClouds();
-    // For long sequences, show only the most recent portion when the point cap is hit.
-    const counts = manifest.frames.map(f => f.count);
-    let start = index;
-    if (viewMode === 'window') start = Math.max(0, index - Number(ui.windowSize.value) + 1);
-    if (viewMode === 'accumulate') {
-      let points = 0;
-      for (let k = index; k >= 0; k--) {
-        if (k < index && points + counts[k] > MAX_VISIBLE_POINTS) break;
-        points += counts[k]; start = k;
-      }
+    let frames = [index];
+    if (viewMode === 'window') {
+      frames = [];
+      for (let k = Math.max(0, index - Number(ui.windowSize.value) + 1); k <= index; k++) frames.push(k);
     }
-    for (let k = start; k <= index; k++) {
+    if (viewMode === 'accumulate') frames = accumulateFrames(index);
+    for (const k of frames) {
       const frame = await getFrame(k);
       if (generation !== request) return;
       createPoints(frame, k);
-      trimVisible();
     }
   } else {
     const frame = await getFrame(index);
     if (generation !== request) return;
     createPoints(frame, index);
-    trimVisible();
   }
   if (generation !== request) return;
+  trimVisible(index);
+  applyFade(index);
   currentFrame = index;
   displayedMode = viewMode;
   updateStats(index);
@@ -216,16 +257,22 @@ function updateColor(next) {
     button.setAttribute('aria-pressed', String(active));
   }
 }
-function updateMode(next) {
+function updateMode(next, {render = true} = {}) {
   setPlaying(false);
+  requestedMode = next;
+  // Fused snapshots are cumulative already: overlaying them would duplicate geometry.
+  const fused = dataset?.representation === 'fused';
+  if (fused) next = 'frame';
   viewMode = next;
+  ui.modeDesc.hidden = !fused;
   ui.windowRow.hidden = next !== 'window';
   for (const button of ui.modeControls.querySelectorAll('button')) {
     const active = button.dataset.mode === next;
     button.classList.toggle('active', active);
     button.setAttribute('aria-pressed', String(active));
+    button.disabled = fused && button.dataset.mode !== 'frame';
   }
-  showFrame(Math.max(0, currentFrame), {force: true}).catch(fail);
+  if (render) showFrame(Math.max(0, currentFrame), {force: true}).catch(fail);
 }
 function resetView() {
   camera.position.set(3.5, 2.7, 5.7);
@@ -335,8 +382,10 @@ function wireControls() {
     ui.windowValue.textContent = ui.windowSize.value;
     if (viewMode === 'window') showFrame(Math.max(0, currentFrame), {force: true}).catch(fail);
   });
+  ui.fadeToggle.addEventListener('change', () => applyFade(currentFrame));
   ui.pointSize.addEventListener('input', () => {
     material.size = 0.011 + Number(ui.pointSize.value) * 0.005;
+    for (const {points} of displayed) points.material.size = material.size;
     ui.pointSizeValue.textContent = ui.pointSize.value;
   });
   ui.backgroundToggle.addEventListener('change', () => showFrame(Math.max(0, currentFrame), {force: true}).catch(fail));
@@ -352,29 +401,88 @@ function wireControls() {
   });
 }
 
+const REPRESENTATIONS = {raw: 'Per-frame clouds', fused: 'Fused snapshots'};
+
+function describeDataset(entry) {
+  return [
+    entry.frames && `${entry.frames} frames`,
+    entry.resolution && `${entry.resolution} px`,
+    REPRESENTATIONS[entry.representation] || entry.representation,
+    entry.description,
+  ].filter(Boolean).join(' · ');
+}
+
+function renderDatasetButtons() {
+  ui.datasetControls.replaceChildren(...catalog.datasets.map(entry => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.dataset.id = entry.id;
+    button.textContent = entry.label || entry.id;
+    button.title = describeDataset(entry);
+    button.addEventListener('click', () => {
+      if (entry.id !== dataset?.id) loadDataset(entry.id).catch(fail);
+    });
+    return button;
+  }));
+}
+
+async function loadDataset(id) {
+  const entry = catalog.datasets.find(d => d.id === id) || catalog.datasets[0];
+  setPlaying(false);
+  generation++; // cancels any frame load still in flight for the previous dataset
+  manifest = null;
+  dataset = entry;
+  for (const button of ui.datasetControls.querySelectorAll('button')) {
+    const active = button.dataset.id === entry.id;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  }
+  ui.datasetDesc.textContent = describeDataset(entry);
+  ui.dataBadge.classList.remove('error');
+  setLoading('Loading point clouds...', `Reading ${entry.path}/manifest.json`);
+
+  const response = await fetch(dataUrl(entry, 'manifest.json'), {cache: 'no-store'});
+  if (!response.ok) throw new Error(`${entry.path}/manifest.json returned HTTP ${response.status}`);
+  const next = await response.json();
+  if (dataset !== entry) return; // switched again meanwhile
+  if (!Array.isArray(next.frames) || !next.frames.length || next.format !== 'S4D1')
+    throw new Error(`Invalid ${entry.path}/manifest.json (expected S4D1 with a nonempty frames array)`);
+  manifest = next;
+  const bounds = manifest.bounds || {};
+  cloudCenter = bounds.center || [0, 0, 0];
+  cloudScale = 4 / Math.max(Number(bounds.diagonal) || 1, 0.00001);
+
+  const url = new URL(location.href);
+  url.searchParams.set('data', entry.id);
+  history.replaceState(null, '', url);
+
+  ui.frameCount.textContent = fmt(manifest.frames.length);
+  ui.pointTotal.textContent = fmt(manifest.frames.reduce((sum, frame) => sum + frame.count, 0));
+  ui.dataBadge.textContent = manifest.sample ? 'Sample dataset' : (entry.label || entry.id);
+  ui.timeline.max = manifest.frames.length - 1;
+  ui.timeline.disabled = false;
+  ui.prev.disabled = false;ui.next.disabled = false;ui.play.disabled = false;
+  ui.footerNote.textContent = manifest.sample ? 'Sample data (replace with your exported point clouds).' : '';
+  updateColor(colorMode);
+  if (manifest.has_rgb === false) {
+    ui.colorDesc.textContent = 'RGB unavailable: using instance colors';
+  }
+  updateMode(requestedMode, {render: false});
+  // Keep the current frame (and camera) so reconstructions can be compared directly.
+  await showFrame(Math.max(0, currentFrame), {force: true});
+}
+
 async function start() {
   try {
     setupScene(); wireControls();
-    const response = await fetch(new URL('./data/manifest.json', import.meta.url), {cache: 'no-store'});
-    if (!response.ok) throw new Error(`data/manifest.json returned HTTP ${response.status}`);
-    manifest = await response.json();
-    if (!Array.isArray(manifest.frames) || !manifest.frames.length || manifest.format !== 'S4D1')
-      throw new Error('Missing or invalid manifest (expected S4D1 with a nonempty frames array)');
-    const bounds = manifest.bounds || {};
-    cloudCenter = bounds.center || [0, 0, 0];
-    cloudScale = 4 / Math.max(Number(bounds.diagonal) || 1, 0.00001);
-    ui.frameCount.textContent = fmt(manifest.frames.length);
-    ui.pointTotal.textContent = fmt(manifest.frames.reduce((sum, frame) => sum + frame.count, 0));
-    ui.dataBadge.textContent = manifest.sample ? 'Sample dataset' : 'Dataset loaded';
-  
-    ui.timeline.max = manifest.frames.length - 1;
-    ui.timeline.disabled = false;
-    ui.prev.disabled = false;ui.next.disabled = false;ui.play.disabled = false;
-    ui.footerNote.textContent = manifest.sample ? 'Sample data (replace with your exported point clouds).' : ''; 
-    if (manifest.has_rgb === false) {
-      ui.colorDesc.textContent = 'RGB unavailable: using instance colors';
-    }
-    await showFrame(0);
+    const response = await fetch(new URL('./datasets.json', import.meta.url), {cache: 'no-store'});
+    if (!response.ok) throw new Error(`datasets.json returned HTTP ${response.status}`);
+    catalog = await response.json();
+    if (!Array.isArray(catalog.datasets) || !catalog.datasets.length)
+      throw new Error('datasets.json has no datasets');
+    renderDatasetButtons();
+    const requested = new URLSearchParams(location.search).get('data');
+    await loadDataset(requested || catalog.default);
   } catch (error) {fail(error);}
 }
 start();

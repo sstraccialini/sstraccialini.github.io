@@ -21,6 +21,9 @@ a { color: inherit; }
 .header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 18px; }
 .header h1 { font-size: 20px; font-weight: 600; margin: 0; }
 .header a { color: #555; font-size: 13px; }
+.datasets { margin-bottom: 14px; }
+.datasets h2 { margin: 0 0 10px; font-size: 13px; font-weight: 600; }
+.datasets .muted { margin-bottom: 0; }
 .viewer { border: 1px solid #ddd; }
 .viewer-header { padding: 9px 14px; display: flex; justify-content: space-between; font-size: 12px; color: #666; border-bottom: 1px solid #ddd; }
 #dataBadge.error { color: #a02222; }

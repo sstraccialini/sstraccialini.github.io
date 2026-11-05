@@ -1,0 +1,571 @@
+{
+  "version": 1,
+  "format": "S4D1",
+  "dataset": "ADT_video_cut",
+  "sample": false,
+  "has_rgb": true,
+  "bounds": {
+    "center": [
+      -0.04321844905614852,
+      -0.16058375507593148,
+      0.9616065834462643
+    ],
+    "diagonal": 2.1250249815922677
+  },
+  "points_per_frame_limit": 12000,
+  "frames": [
+    {
+      "file": "frames/frame_0000.bin",
+      "count": 12000,
+      "frame_index": 0,
+      "source_frame_index": 0,
+      "time_seconds": 0.0
+    },
+    {
+      "file": "frames/frame_0001.bin",
+      "count": 12000,
+      "frame_index": 1,
+      "source_frame_index": 1,
+      "time_seconds": 0.03337
+    },
+    {
+      "file": "frames/frame_0002.bin",
+      "count": 12000,
+      "frame_index": 2,
+      "source_frame_index": 2,
+      "time_seconds": 0.06674
+    },
+    {
+      "file": "frames/frame_0003.bin",
+      "count": 12000,
+      "frame_index": 3,
+      "source_frame_index": 3,
+      "time_seconds": 0.100111
+    },
+    {
+      "file": "frames/frame_0004.bin",
+      "count": 12000,
+      "frame_index": 4,
+      "source_frame_index": 4,
+      "time_seconds": 0.133481
+    },
+    {
+      "file": "frames/frame_0005.bin",
+      "count": 12000,
+      "frame_index": 5,
+      "source_frame_index": 5,
+      "time_seconds": 0.166851
+    },
+    {
+      "file": "frames/frame_0006.bin",
+      "count": 12000,
+      "frame_index": 6,
+      "source_frame_index": 6,
+      "time_seconds": 0.200221
+    },
+    {
+      "file": "frames/frame_0007.bin",
+      "count": 12000,
+      "frame_index": 7,
+      "source_frame_index": 7,
+      "time_seconds": 0.233591
+    },
+    {
+      "file": "frames/frame_0008.bin",
+      "count": 12000,
+      "frame_index": 8,
+      "source_frame_index": 8,
+      "time_seconds": 0.266961
+    },
+    {
+      "file": "frames/frame_0009.bin",
+      "count": 12000,
+      "frame_index": 9,
+      "source_frame_index": 9,
+      "time_seconds": 0.300332
+    },
+    {
+      "file": "frames/frame_0010.bin",
+      "count": 12000,
+      "frame_index": 10,
+      "source_frame_index": 10,
+      "time_seconds": 0.333702
+    },
+    {
+      "file": "frames/frame_0011.bin",
+      "count": 12000,
+      "frame_index": 11,
+      "source_frame_index": 11,
+      "time_seconds": 0.367072
+    },
+    {
+      "file": "frames/frame_0012.bin",
+      "count": 12000,
+      "frame_index": 12,
+      "source_frame_index": 12,
+      "time_seconds": 0.400442
+    },
+    {
+      "file": "frames/frame_0013.bin",
+      "count": 12000,
+      "frame_index": 13,
+      "source_frame_index": 13,
+      "time_seconds": 0.433812
+    },
+    {
+      "file": "frames/frame_0014.bin",
+      "count": 12000,
+      "frame_index": 14,
+      "source_frame_index": 14,
+      "time_seconds": 0.467182
+    },
+    {
+      "file": "frames/frame_0015.bin",
+      "count": 12000,
+      "frame_index": 15,
+      "source_frame_index": 15,
+      "time_seconds": 0.500553
+    },
+    {
+      "file": "frames/frame_0016.bin",
+      "count": 12000,
+      "frame_index": 16,
+      "source_frame_index": 16,
+      "time_seconds": 0.533923
+    },
+    {
+      "file": "frames/frame_0017.bin",
+      "count": 12000,
+      "frame_index": 17,
+      "source_frame_index": 17,
+      "time_seconds": 0.567293
+    },
+    {
+      "file": "frames/frame_0018.bin",
+      "count": 12000,
+      "frame_index": 18,
+      "source_frame_index": 18,
+      "time_seconds": 0.600663
+    },
+    {
+      "file": "frames/frame_0019.bin",
+      "count": 12000,
+      "frame_index": 19,
+      "source_frame_index": 19,
+      "time_seconds": 0.634033
+    },
+    {
+      "file": "frames/frame_0020.bin",
+      "count": 12000,
+      "frame_index": 20,
+      "source_frame_index": 20,
+      "time_seconds": 0.667403
+    },
+    {
+      "file": "frames/frame_0021.bin",
+      "count": 12000,
+      "frame_index": 21,
+      "source_frame_index": 21,
+      "time_seconds": 0.700774
+    },
+    {
+      "file": "frames/frame_0022.bin",
+      "count": 12000,
+      "frame_index": 22,
+      "source_frame_index": 22,
+      "time_seconds": 0.734144
+    },
+    {
+      "file": "frames/frame_0023.bin",
+      "count": 12000,
+      "frame_index": 23,
+      "source_frame_index": 23,
+      "time_seconds": 0.767514
+    },
+    {
+      "file": "frames/frame_0024.bin",
+      "count": 12000,
+      "frame_index": 24,
+      "source_frame_index": 24,
+      "time_seconds": 0.800884
+    },
+    {
+      "file": "frames/frame_0025.bin",
+      "count": 12000,
+      "frame_index": 25,
+      "source_frame_index": 25,
+      "time_seconds": 0.834254
+    },
+    {
+      "file": "frames/frame_0026.bin",
+      "count": 12000,
+      "frame_index": 26,
+      "source_frame_index": 26,
+      "time_seconds": 0.867624
+    },
+    {
+      "file": "frames/frame_0027.bin",
+      "count": 12000,
+      "frame_index": 27,
+      "source_frame_index": 27,
+      "time_seconds": 0.900995
+    },
+    {
+      "file": "frames/frame_0028.bin",
+      "count": 12000,
+      "frame_index": 28,
+      "source_frame_index": 28,
+      "time_seconds": 0.934365
+    },
+    {
+      "file": "frames/frame_0029.bin",
+      "count": 12000,
+      "frame_index": 29,
+      "source_frame_index": 29,
+      "time_seconds": 0.967735
+    },
+    {
+      "file": "frames/frame_0030.bin",
+      "count": 12000,
+      "frame_index": 30,
+      "source_frame_index": 30,
+      "time_seconds": 1.001105
+    },
+    {
+      "file": "frames/frame_0031.bin",
+      "count": 12000,
+      "frame_index": 31,
+      "source_frame_index": 31,
+      "time_seconds": 1.034475
+    },
+    {
+      "file": "frames/frame_0032.bin",
+      "count": 12000,
+      "frame_index": 32,
+      "source_frame_index": 32,
+      "time_seconds": 1.067845
+    },
+    {
+      "file": "frames/frame_0033.bin",
+      "count": 12000,
+      "frame_index": 33,
+      "source_frame_index": 33,
+      "time_seconds": 1.101216
+    },
+    {
+      "file": "frames/frame_0034.bin",
+      "count": 12000,
+      "frame_index": 34,
+      "source_frame_index": 34,
+      "time_seconds": 1.134586
+    },
+    {
+      "file": "frames/frame_0035.bin",
+      "count": 12000,
+      "frame_index": 35,
+      "source_frame_index": 35,
+      "time_seconds": 1.167956
+    },
+    {
+      "file": "frames/frame_0036.bin",
+      "count": 12000,
+      "frame_index": 36,
+      "source_frame_index": 36,
+      "time_seconds": 1.201326
+    },
+    {
+      "file": "frames/frame_0037.bin",
+      "count": 12000,
+      "frame_index": 37,
+      "source_frame_index": 37,
+      "time_seconds": 1.234696
+    },
+    {
+      "file": "frames/frame_0038.bin",
+      "count": 12000,
+      "frame_index": 38,
+      "source_frame_index": 38,
+      "time_seconds": 1.268066
+    },
+    {
+      "file": "frames/frame_0039.bin",
+      "count": 12000,
+      "frame_index": 39,
+      "source_frame_index": 39,
+      "time_seconds": 1.301437
+    },
+    {
+      "file": "frames/frame_0040.bin",
+      "count": 12000,
+      "frame_index": 40,
+      "source_frame_index": 40,
+      "time_seconds": 1.334807
+    },
+    {
+      "file": "frames/frame_0041.bin",
+      "count": 12000,
+      "frame_index": 41,
+      "source_frame_index": 41,
+      "time_seconds": 1.368177
+    },
+    {
+      "file": "frames/frame_0042.bin",
+      "count": 12000,
+      "frame_index": 42,
+      "source_frame_index": 42,
+      "time_seconds": 1.401547
+    },
+    {
+      "file": "frames/frame_0043.bin",
+      "count": 12000,
+      "frame_index": 43,
+      "source_frame_index": 43,
+      "time_seconds": 1.434917
+    },
+    {
+      "file": "frames/frame_0044.bin",
+      "count": 12000,
+      "frame_index": 44,
+      "source_frame_index": 44,
+      "time_seconds": 1.468287
+    },
+    {
+      "file": "frames/frame_0045.bin",
+      "count": 12000,
+      "frame_index": 45,
+      "source_frame_index": 45,
+      "time_seconds": 1.501658
+    },
+    {
+      "file": "frames/frame_0046.bin",
+      "count": 12000,
+      "frame_index": 46,
+      "source_frame_index": 46,
+      "time_seconds": 1.535028
+    },
+    {
+      "file": "frames/frame_0047.bin",
+      "count": 12000,
+      "frame_index": 47,
+      "source_frame_index": 47,
+      "time_seconds": 1.568398
+    },
+    {
+      "file": "frames/frame_0048.bin",
+      "count": 12000,
+      "frame_index": 48,
+      "source_frame_index": 48,
+      "time_seconds": 1.601768
+    },
+    {
+      "file": "frames/frame_0049.bin",
+      "count": 12000,
+      "frame_index": 49,
+      "source_frame_index": 49,
+      "time_seconds": 1.635138
+    },
+    {
+      "file": "frames/frame_0050.bin",
+      "count": 12000,
+      "frame_index": 50,
+      "source_frame_index": 50,
+      "time_seconds": 1.668508
+    },
+    {
+      "file": "frames/frame_0051.bin",
+      "count": 12000,
+      "frame_index": 51,
+      "source_frame_index": 51,
+      "time_seconds": 1.701879
+    },
+    {
+      "file": "frames/frame_0052.bin",
+      "count": 12000,
+      "frame_index": 52,
+      "source_frame_index": 52,
+      "time_seconds": 1.735249
+    },
+    {
+      "file": "frames/frame_0053.bin",
+      "count": 12000,
+      "frame_index": 53,
+      "source_frame_index": 53,
+      "time_seconds": 1.768619
+    },
+    {
+      "file": "frames/frame_0054.bin",
+      "count": 12000,
+      "frame_index": 54,
+      "source_frame_index": 54,
+      "time_seconds": 1.801989
+    },
+    {
+      "file": "frames/frame_0055.bin",
+      "count": 12000,
+      "frame_index": 55,
+      "source_frame_index": 55,
+      "time_seconds": 1.835359
+    },
+    {
+      "file": "frames/frame_0056.bin",
+      "count": 12000,
+      "frame_index": 56,
+      "source_frame_index": 56,
+      "time_seconds": 1.868729
+    },
+    {
+      "file": "frames/frame_0057.bin",
+      "count": 12000,
+      "frame_index": 57,
+      "source_frame_index": 57,
+      "time_seconds": 1.9021
+    },
+    {
+      "file": "frames/frame_0058.bin",
+      "count": 12000,
+      "frame_index": 58,
+      "source_frame_index": 58,
+      "time_seconds": 1.93547
+    },
+    {
+      "file": "frames/frame_0059.bin",
+      "count": 12000,
+      "frame_index": 59,
+      "source_frame_index": 59,
+      "time_seconds": 1.96884
+    },
+    {
+      "file": "frames/frame_0060.bin",
+      "count": 12000,
+      "frame_index": 60,
+      "source_frame_index": 60,
+      "time_seconds": 2.00221
+    },
+    {
+      "file": "frames/frame_0061.bin",
+      "count": 12000,
+      "frame_index": 61,
+      "source_frame_index": 61,
+      "time_seconds": 2.03558
+    },
+    {
+      "file": "frames/frame_0062.bin",
+      "count": 12000,
+      "frame_index": 62,
+      "source_frame_index": 62,
+      "time_seconds": 2.06895
+    },
+    {
+      "file": "frames/frame_0063.bin",
+      "count": 12000,
+      "frame_index": 63,
+      "source_frame_index": 63,
+      "time_seconds": 2.102321
+    },
+    {
+      "file": "frames/frame_0064.bin",
+      "count": 12000,
+      "frame_index": 64,
+      "source_frame_index": 64,
+      "time_seconds": 2.135691
+    },
+    {
+      "file": "frames/frame_0065.bin",
+      "count": 12000,
+      "frame_index": 65,
+      "source_frame_index": 65,
+      "time_seconds": 2.169061
+    },
+    {
+      "file": "frames/frame_0066.bin",
+      "count": 12000,
+      "frame_index": 66,
+      "source_frame_index": 66,
+      "time_seconds": 2.202431
+    },
+    {
+      "file": "frames/frame_0067.bin",
+      "count": 12000,
+      "frame_index": 67,
+      "source_frame_index": 67,
+      "time_seconds": 2.235801
+    },
+    {
+      "file": "frames/frame_0068.bin",
+      "count": 12000,
+      "frame_index": 68,
+      "source_frame_index": 68,
+      "time_seconds": 2.269171
+    },
+    {
+      "file": "frames/frame_0069.bin",
+      "count": 12000,
+      "frame_index": 69,
+      "source_frame_index": 69,
+      "time_seconds": 2.302542
+    },
+    {
+      "file": "frames/frame_0070.bin",
+      "count": 12000,
+      "frame_index": 70,
+      "source_frame_index": 70,
+      "time_seconds": 2.335912
+    },
+    {
+      "file": "frames/frame_0071.bin",
+      "count": 12000,
+      "frame_index": 71,
+      "source_frame_index": 71,
+      "time_seconds": 2.369282
+    },
+    {
+      "file": "frames/frame_0072.bin",
+      "count": 12000,
+      "frame_index": 72,
+      "source_frame_index": 72,
+      "time_seconds": 2.402652
+    },
+    {
+      "file": "frames/frame_0073.bin",
+      "count": 12000,
+      "frame_index": 73,
+      "source_frame_index": 73,
+      "time_seconds": 2.436022
+    },
+    {
+      "file": "frames/frame_0074.bin",
+      "count": 12000,
+      "frame_index": 74,
+      "source_frame_index": 74,
+      "time_seconds": 2.469392
+    },
+    {
+      "file": "frames/frame_0075.bin",
+      "count": 12000,
+      "frame_index": 75,
+      "source_frame_index": 75,
+      "time_seconds": 2.502763
+    },
+    {
+      "file": "frames/frame_0076.bin",
+      "count": 12000,
+      "frame_index": 76,
+      "source_frame_index": 76,
+      "time_seconds": 2.536133
+    },
+    {
+      "file": "frames/frame_0077.bin",
+      "count": 12000,
+      "frame_index": 77,
+      "source_frame_index": 77,
+      "time_seconds": 2.569503
+    },
+    {
+      "file": "frames/frame_0078.bin",
+      "count": 12000,
+      "frame_index": 78,
+      "source_frame_index": 78,
+      "time_seconds": 2.602873
+    }
+  ]
+}

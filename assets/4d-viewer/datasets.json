@@ -1,0 +1,32 @@
+{
+  "default": "ADT_video_cut_80_512",
+  "datasets": [
+    {
+      "id": "ADT_video_600_512",
+      "path": "ADT_video_600_512",
+      "label": "ADT Apartment_release_clean_seq131_M1292 600f 512px",
+      "representation": "raw",
+      "frames": 600,
+      "resolution": 512,
+      "description": "S4VY + VGGT-Ω export"
+    },
+    {
+      "id": "ADT_video_cut_80_512",
+      "path": "ADT_video_cut_80_512",
+      "label": "ADT 10s 80f 512px",
+      "representation": "raw",
+      "frames": 80,
+      "resolution": 512,
+      "description": "S4VY + VGGT-Ω export"
+    },
+    {
+      "id": "EPIC-KITCHENS-P01_01_1652_512",
+      "path": "EPIC-KITCHENS-P01_01_1652_512",
+      "label": "EPIC-KITCHENS-P01_01_1652_512",
+      "representation": "raw",
+      "frames": 1652,
+      "resolution": 512,
+      "description": "S4VY + VGGT-Ω export"
+    }
+  ]
+}
